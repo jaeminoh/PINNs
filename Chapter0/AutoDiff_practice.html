@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>배경 지식 - Automatic Differentiation &#8212; 모두를 위한 Physics-informed neural networks</title>
+    <title>Automatic Differentation: Practice &#8212; 모두를 위한 Physics-informed neural networks</title>
   
   
   
@@ -18,51 +18,52 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '0.background_knowledge_automatic_differentiation';</script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="모두를 위한 Physics-informed Neural Networks" href="intro.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter0/AutoDiff_practice';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Automatic Differentiation" href="AutoDiff.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -94,7 +95,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="search.html"
+      action="../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -143,7 +144,7 @@
     
   
 
-<a class="navbar-brand logo" href="intro.html">
+<a class="navbar-brand logo" href="../Introduction.html">
   
   
   
@@ -169,13 +170,17 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    모두를 위한 Physics-informed Neural Networks
+                <a class="reference internal" href="../Introduction.html">
+                    Introduction
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">배경 지식 - Automatic Differentiation</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Preliminaries</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="AutoDiff.html">Automatic Differentiation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Automatic Differentation: Practice</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -230,7 +235,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/jaeminoh/PINNs" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -247,7 +252,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F0.background_knowledge_automatic_differentiation.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FChapter0/AutoDiff_practice.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +282,7 @@
       
       
       
-      <li><a href="_sources/0.background_knowledge_automatic_differentiation.ipynb" target="_blank"
+      <li><a href="../_sources/Chapter0/AutoDiff_practice.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,7 +366,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>배경 지식 - Automatic Differentiation</h1>
+    <h1>Automatic Differentation: Practice</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -371,8 +376,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">두 가지 모드</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ad">AD 이해하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">속도 비교</a></li>
 </ul>
             </nav>
         </div>
@@ -384,78 +388,82 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="automatic-differentiation">
-<h1>배경 지식 - Automatic Differentiation<a class="headerlink" href="#automatic-differentiation" title="Link to this heading">#</a></h1>
-<p>Automatic differentiation (줄여서 AD)는 함수의 미분 값을 “자동”으로 계산해주는 알고리즘입니다.
-역전파 (backpropagation) 알고리즘으로 알고 계실 수도 있을 것 같습니다.
-하지만 둘은 다른 용어입니다.</p>
-<section id="id1">
-<h2>두 가지 모드<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>AD는 크게 두 가지 방법이 있습니다.
-Forward mode와 reverse mode입니다.
-효율적인 계산을 위해서 각 mode가 어떻게 동작하는지 알고, 상황에 따라 적절한 알고리즘을 선택해서 사용할 필요가 있습니다.
-결론부터 말하자면,
-함수
-$<span class="math notranslate nohighlight">\(f: \mathbb{R}^{d_\mathrm{in}} \rightarrow \mathbb{R}^{d_\mathrm{out}}\)</span><span class="math notranslate nohighlight">\(
-가 있을 때
-\)</span>d_\mathrm{in} &lt; d_\mathrm{out}<span class="math notranslate nohighlight">\( 인 경우에 forward mode가 빠르고,
-반대의 경우 \)</span>d_\mathrm{in} &gt; d_\mathrm{out}$에 reverse mode가 빠릅니다.</p>
-<p>Deep Learning의 경우 손실 함수 (Loss function) <span class="math notranslate nohighlight">\(L\)</span>의 input은 neural network의 parameter <span class="math notranslate nohighlight">\(\theta \in \mathbb{R}^p\)</span>가 되고, output은 손실 함수의 값 <span class="math notranslate nohighlight">\(L(\theta) \in \mathbb{R}\)</span>이 됩니다.
-많은 경우에 <span class="math notranslate nohighlight">\(p \gg 1\)</span> 이므로 reverse mode가 빠릅니다.</p>
-<p>실험을 통해 보겠습니다.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="automatic-differentation-practice">
+<h1>Automatic Differentation: Practice<a class="headerlink" href="#automatic-differentation-practice" title="Link to this heading">#</a></h1>
+<p>JAX를 통해 연습하겠습니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jax</span>  <span class="c1"># AD library JAX를 import 합니다.</span>
 <span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>  <span class="c1"># jnp는 numpy와 &quot;거의&quot; 같습니다.</span>
-
-
-<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h2>속도 비교<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="AutoDiff.html#speed-forward-vs-reverse"><span class="std std-ref">여기</span></a>에서 설명되었듯이,
+<span class="math notranslate nohighlight">\(d_\mathrm{in} &lt; d_\mathrm{out}\)</span>인 경우 forward mode가 빠르고
+반대의 경우 reverse mode가 빠릅니다.</p>
+<p>먼저 <span class="math notranslate nohighlight">\(d_\mathrm{in} &lt; d_\mathrm{out}\)</span>인 경우를 테스트 하겠습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span> 
     <span class="c1"># scalar를 받아서 [1, x, ..., x^9999]를 리턴하는 함수, d_in &lt; d_out</span>
     <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
 
-
-<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">y</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="n">f_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">f_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>함수 <code class="docutils literal notranslate"><span class="pre">f</span></code>의 경우 <span class="math notranslate nohighlight">\(d_\mathrm{in} = 1 \ll d_\mathrm{out} = 10^4\)</span> 이므로, forward mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">f_fwd</span></code>가 reverse mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">f_rev</span></code>보다 빨라야 합니다.</p>
+<div class="proof remark admonition" id="remark-0">
+<p class="admonition-title"><span class="caption-number">Remark 2 </span></p>
+<section class="remark-content" id="proof-content">
+<p>시간을 잴 함수를 <code class="docutils literal notranslate"><span class="pre">jax.jit</span></code>에 통과시키면 JIT 컴파일이 되고, 계산 속도가 빨리집니다.</p>
+</section>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">f_fwd</span><span class="p">)</span> <span class="c1"># compile</span>
+<span class="n">f_fwd</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># warmup</span>
+<span class="o">%</span><span class="k">timeit</span> f_fwd(x).block_until_ready()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-06-27 21:17:14.577065: W external/xla/xla/service/gpu/nvptx_compiler.cc:765] The NVIDIA driver&#39;s CUDA version is 12.4 which is older than the ptxas CUDA version (12.5.40). Because the driver is older than the ptxas version, XLA is disabling parallel compilation, which may slow down compilation. You should update your NVIDIA driver or use the NVIDIA-provided CUDA forward compatibility packages.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>109 μs ± 11.4 μs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">f_rev</span><span class="p">)</span>
+<span class="n">f_rev</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="o">%</span><span class="k">timeit</span> f_rev(x).block_until_ready()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>232 μs ± 1.16 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">y</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
     <span class="c1"># array를 받아서 제곱한 후 평균을 취하는 함수, d_in &gt; d_out</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-
-<span class="n">f_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">f_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 <span class="n">g_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 <span class="n">g_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10000</span><span class="p">,))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-06-27 12:28:04.880894: W external/xla/xla/service/gpu/nvptx_compiler.cc:765] The NVIDIA driver&#39;s CUDA version is 12.4 which is older than the ptxas CUDA version (12.5.40). Because the driver is older than the ptxas version, XLA is disabling parallel compilation, which may slow down compilation. You should update your NVIDIA driver or use the NVIDIA-provided CUDA forward compatibility packages.
-</pre></div>
-</div>
-</div>
-</div>
-<p>함수 <code class="docutils literal notranslate"><span class="pre">f</span></code>의 경우 <span class="math notranslate nohighlight">\(d_\mathrm{in} = 1 \ll d_\mathrm{out} = 10^4\)</span> 이므로, forward mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">f_fwd</span></code>가 reverse mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">g_rev</span></code>보다 빨라야 합니다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> f_fwd(x).block_until_ready()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.39 ms ± 508 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> f_rev(x).block_until_ready()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.6 ms ± 167 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -464,32 +472,33 @@ $<span class="math notranslate nohighlight">\(f: \mathbb{R}^{d_\mathrm{in}} \rig
 <p>반면, 함수 <code class="docutils literal notranslate"><span class="pre">g</span></code>의 경우 <span class="math notranslate nohighlight">\(d_\mathrm{in} = 10^4 \gg d_\mathrm{out} = 1\)</span> 이므로, reverse mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">g_rev</span></code>가 forward mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">g_fwd</span></code> 보다 빨라야 합니다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> g_fwd(y).block_until_ready()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">g_fwd</span><span class="p">)</span>
+<span class="n">g_fwd</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="o">%</span><span class="k">timeit</span> g_fwd(y).block_until_ready()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11.6 ms ± 56.9 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>222 μs ± 2.09 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> g_rev(y).block_until_ready()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">g_rev</span><span class="p">)</span>
+<span class="n">g_rev</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="o">%</span><span class="k">timeit</span> g_rev(y).block_until_ready()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.75 ms ± 342 μs per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63.6 μs ± 768 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">g_rev</span></code>가 약 두배 정도 빠른 것을 볼 수 있습니다.</p>
-</section>
-<section id="ad">
-<h2>AD 이해하기<a class="headerlink" href="#ad" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -506,7 +515,7 @@ $<span class="math notranslate nohighlight">\(f: \mathbb{R}^{d_\mathrm{in}} \rig
         },
         kernelOptions: {
             name: "python3",
-            path: "./."
+            path: "./Chapter0"
         },
         predefinedOutput: true
     }
@@ -524,12 +533,12 @@ $<span class="math notranslate nohighlight">\(f: \mathbb{R}^{d_\mathrm{in}} \rig
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="AutoDiff.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">모두를 위한 Physics-informed Neural Networks</p>
+        <p class="prev-next-title">Automatic Differentiation</p>
       </div>
     </a>
 </div>
@@ -548,8 +557,7 @@ $<span class="math notranslate nohighlight">\(f: \mathbb{R}^{d_\mathrm{in}} \rig
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">두 가지 모드</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ad">AD 이해하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">속도 비교</a></li>
 </ul>
   </nav></div>
 
@@ -598,8 +606,8 @@ By Jaemin Oh
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

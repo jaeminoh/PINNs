@@ -1,4 +1,4 @@
-# 모두를 위한 Physics-informed Neural Networks
+# Introduction
 2017년에 arxiv에 처음 등장한 논문 physics-informed neural networks (PINNs)에서 시작된 physics-informed machine learning (PIML)은 전 세계적으로 많은 관심을 받고 있는 머신러닝 / 수치해석의 한 분야입니다.
 하지만 안타깝게도 한글로 된 자료가 아직 많지 않습니다.
 
