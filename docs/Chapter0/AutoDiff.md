@@ -1,0 +1,126 @@
+# Automatic Differentiation
+컴퓨터로 계산을 할 때, 모든 함수는 간단한 함수의 합성입니다.
+예를 들어 인공신경망은 덧셈, 곱셈, 그리고 activation function이라는 "간단한" 함수들의 합성으로 이루어져 있습니다.
+Automatic Differentiation (AD)는 "간단한" 함수들의 미분을 미리 계산해두고, $f$를 미분할 때 미리 계산된 미분을 사용하는 방법입니다.
+
+```{prf:remark}
+역전파 (backpropagation) 알고리즘은 reverse-mode AD를 지칭합니다.
+```
+
+어떤 함수 $f: \mathbb{R}\rightarrow \mathbb{R}$가 있고,
+이 함수는 "간단한" 함수들 {math}`f_1, \dots, f_N: \mathbb{R}\rightarrow \mathbb{R}`의 합성
+```{math}
+    f = f_N \circ \cdots \circ f_1
+```
+으로 표현할 수 있다고 하겠습니다.
+만약 $f_i$들의 미분을 알고 있다면, 합성함수의 미분법 (Chain rule)을 통해서 $f'$를 계산할 수 있는 공식
+```{math}
+:label: chain-rule
+    f' = \left(f'_N \circ f_{N-1} \circ \cdots \circ f_1\right) \cdots f'_1
+```
+을 얻을 수 있습니다.
+
+
+## TL DR
+AD는 크게 두 가지 방법이 있습니다.
+Forward mode와 reverse mode입니다.
+상황에 따라 적절한 mode를 선택해서 사용한다면, 효율적인 컴퓨팅을 할 수 있습니다.
+
+결론부터 말하자면,
+함수
+```{math}
+    f: \mathbb{R}^{d_\mathrm{in}} \rightarrow \mathbb{R}^{d_\mathrm{out}}
+```
+가 있을 때
+{math}`d_\mathrm{in} < d_\mathrm{out}`인 경우 forward mode가 빠르고,
+반대의 경우 {math}`d_\mathrm{in} > d_\mathrm{out}`에 reverse mode가 빠릅니다.
+
+Deep Learning의 경우 손실 함수 (Loss function) $L$의 input은 neural network의 parameter $\theta \in \mathbb{R}^p$가 되고, output은 손실 함수의 값 $L(\theta) \in \mathbb{R}$이 됩니다.
+많은 경우에 $p \gg 1$ 이므로 reverse mode가 빠릅니다.
+
+
+## Dual numbers
+Forward mode AD를 잘 이해하기 위해서는 dual number가 무엇인지 알 필요가 있습니다.
+```{prf:definition}
+:label: dual-numbers
+$\epsilon^2 = 0$인 수 $\epsilon$이 있습니다.
+그리고 두 실수 $p$ 그리고 $t$가 있습니다.
+이 때 표현
+\begin{equation*}
+    p + t\epsilon
+\end{equation*}
+을 dual number라고 합니다.
+
+두 dual number의 덧셈은
+\begin{equation*}
+    (p_1 + t_1 \epsilon) + (p_2 + t_2 \epsilon) = (p_1 + p_2) + (t_1 + t_2)\epsilon,
+\end{equation*}
+로 정의하고,
+곱셈은 
+\begin{equation*}
+    (p_1 + t_1 \epsilon) \cdot (p_2 + t_2 \epsilon) = p_1 \cdot p_2 + (p_1 \cdot t_2 + p_2 \cdot t_1)\epsilon
+\end{equation*}
+으로 정의합니다.
+```
+
+```{prf:example}
+두 dual numbers $p_1 + t_1 \epsilon$, 그리고 $p_2 + t_2 \epsilon$이 있습니다.
+이 때 두 수의 뺄셈과 나눗셈을 계산해 봅시다.
+```
+
+사실, 위 정의는 다음 정의의 특별한 경우입니다.
+```{prf:definition}
+함수 $f$가 있을 때,
+\begin{equation*}
+    f(p + t\epsilon) = f(p) + \partial f(p)[t]\epsilon
+\end{equation*}
+으로 정의합니다.
+```
+$\epsilon$의 계수가 directional derivative를 나타내고 있습니다.
+
+```{prf:example}
+함수 $f$ 그리고 $g$가 있을 때, $(f \circ g) ( p + t\epsilon)$을 계산해 봅시다.
+```
+
+위에서 모든 함수는 "간단한" 함수들의 합성으로 이루어진다고 했었습니다.
+여기서 "간단한" 함수란, dual number를 통해 표현할 수 있는 함수를 의미합니다.
+(Operator overloading) AD는 함수 {math}`f = f_N \circ \cdots \circ f_1`가 있을 때,
+$f_i$들을 모두 dual number를 통해 표현한 후, 함수의 합성을 계산해서 $f(p)$와 $\partial f(p)$를 얻는 방법입니다.
+
+
+(speed-forward-vs-reverse)=
+## Forward vs Reverse
+이제 forward, 그리고 reverse mode AD를 알아보고 비교해 보겠습니다.
+
+### Forward mode AD
+$\partial f(p) t$는 $p$에서 $f$의 Jacobian을 계산한 후, tangent vector $t$를 곱한 형태입니다.
+$f_1(p) + \partial f_1 (p)t$를 $f_2$에 집어넣어서 primal과 tangent vector를 계산하고, 이를 다시 $f_3$에 넣고, ... 를 반복합니다.
+각 과정에서 tangent vector의 계산은 Jacobian과 전 단계에서 계산한 tangent vector 사이의 matrix-vector product입니다.
+결론적으로,
+```{math}
+    \partial f(p)t = \partial f_N \cdots \partial f_1(p) t
+```
+로 표현할 수 있습니다.
+이것을 종종 Jacobian-vector product (JVP)로 부릅니다.
+
+
+### Reverse mode AD
+{math}`d_\mathrm{in} \gg d_\mathrm{out}`의 경우에 forward mode AD는 효율적이지 않습니다.
+$\partial f(p)$은 {math}`d_\mathrm{out}`개의 열과 {math}`d_\mathrm{in}`개의 행을 가지고 있습니다.
+이 경우 $\partial f(p) t$는 computationally expensive하지만,
+$t^T \partial f(p)$는 computationally 저렴합니다.
+$t^T$는 cotangent vector라고 부르며, $t^T \partial f(p)$를 계산하는 것을 reverse mode AD라고 부릅니다.
+풀어헤쳐보면
+```{math}
+    t^T \partial f(p) = t^T \partial f_N \cdots f_1(p)
+```
+입니다.
+이것을 종종 vector-Jacobian product (VJP)로 부릅니다.
+어떻게 $t^T \partial f_N$를 맨 처음 계산하는지에 대해 의문이 들어야 합니다.
+$\partial f_N$의 primal value는 {math}`(f_{N-1} \circ \dots \circ f_1)(p)`이기 때문입니다.
+
+Reverse mode AD는 먼저 $f(p)$를 evaluate 하면서 $f_i(p)$ 값들을 모두 저장해 두고, 나중에 vector-Jacobian product를 계산할 때 꺼내서 사용합니다.
+{math}`d_\mathrm{in} \gg d_\mathrm{out}` 경우에 계산 속도는 forward mode 보다 훨씬 빠르지만,
+대신 메모리 비용이 높습니다.
+
+

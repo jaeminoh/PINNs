@@ -2,6 +2,12 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: Introduction
 chapters:
-- file: 0.background_knowledge_automatic_differentiation
+- file: Chapter0/main
+  sections:
+  - file: Chapter0/AutoDiff
+  - file: Chapter0/AutoDiff_practice
+- file: Chapter1/main
+  sections:
+  - file: Chapter1/SPINNs
