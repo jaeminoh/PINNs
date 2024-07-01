@@ -58,10 +58,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Introduction';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="References.html" />
+    <link rel="next" title="Preliminaries" href="Chapter0/main.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,7 +177,23 @@
                 </a>
             </li>
         </ul>
-        
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Chapter0/main.html">Preliminaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Chapter0/AutoDiff.html">Automatic Differentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter0/AutoDiff_practice.html">Automatic Differentation: Practice</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Chapter1/main.html">Physics-informed neural networks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Chapter1/PhysicsInformedLoss.html">Physics-informed loss</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Chapter5/SPINNs.html">Separable Physics-informed Neural Networks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -373,7 +391,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-library-jax">Machine Learning Library: JAX</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">목차</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jax">JAX 관련 문서들</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pinns">PINNs 관련 논문들</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etc">Etc</a></li>
 </ul>
             </nav>
@@ -461,20 +478,6 @@ PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 
 <li><p><a class="reference external" href="https://jaxopt.github.io/stable/index.html">JAXopt - General Optimizers</a></p></li>
 </ul>
 </section>
-<section id="pinns">
-<h2>PINNs 관련 논문들<a class="headerlink" href="#pinns" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0021999118307125">Raissi et al., Physics-informed neural networks</a></p></li>
-<li><p><a class="reference external" href="https://www.nature.com/articles/s42254-021-00314-5">Karniadakis et al., Physics-informed machine learning</a></p></li>
-<li><p><a class="reference external" href="https://proceedings.neurips.cc/paper/2020/hash/53c04118df112c13a8c34b38343b9c10-Abstract.html">Sitzmann et al., SIREN</a></p></li>
-<li><p><a class="reference external" href="https://epubs.siam.org/doi/abs/10.1137/20M1318043">Wang et al., Learning rate annealing</a></p></li>
-<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S002199912100663X">Wang et al., Neural tangent kernel perspective</a></p></li>
-<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0045782524000690">Wang et al., Causal weighting</a></p></li>
-<li><p><a class="reference external" href="https://openreview.net/forum?id=Jzliv-bxZla">Daw et al., R3 sampling</a></p></li>
-<li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0045782522001438">Yu et al., Gradient enhanced PINNs</a></p></li>
-<li><p><a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2023/hash/4af827e7d0b7bdae6097d44977e87534-Abstract-Conference.html">Cho et al., Separable Physics-informed neural networks</a></p></li>
-</ul>
-</section>
 <section id="etc">
 <h2>Etc<a class="headerlink" href="#etc" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -517,11 +520,11 @@ PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="References.html"
+       href="Chapter0/main.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Preliminaries</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -545,7 +548,6 @@ PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-library-jax">Machine Learning Library: JAX</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">목차</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jax">JAX 관련 문서들</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pinns">PINNs 관련 논문들</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etc">Etc</a></li>
 </ul>
   </nav></div>
