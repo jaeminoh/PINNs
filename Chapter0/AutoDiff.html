@@ -145,7 +145,7 @@
     
   
 
-<a class="navbar-brand logo" href="../Introduction.html">
+<a class="navbar-brand logo" href="../Isolated/Introduction.html">
   
   
   
@@ -171,7 +171,7 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../Introduction.html">
+                <a class="reference internal" href="../Isolated/Introduction.html">
                     Introduction
                 </a>
             </li>
@@ -182,10 +182,15 @@
 <li class="toctree-l2"><a class="reference internal" href="AutoDiff_practice.html">Automatic Differentation: Practice</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter1/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter1/SPINNs.html">Separable Physics-informed Neural Networks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter1/main.html">Physics-informed neural networks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter1/PhysicsInformedLoss.html">Physics-informed loss</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter5/SPINNs.html">Separable Physics-informed Neural Networks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../Isolated/References.html">References</a></li>
 </ul>
 
     </div>
@@ -404,7 +409,7 @@ document.write(`
 <p>컴퓨터로 계산을 할 때, 모든 함수는 간단한 함수의 합성입니다.
 예를 들어 인공신경망은 덧셈, 곱셈, 그리고 activation function이라는 “간단한” 함수들의 합성으로 이루어져 있습니다.
 Automatic Differentiation (AD)는 “간단한” 함수들의 미분을 미리 계산해두고, <span class="math notranslate nohighlight">\(f\)</span>를 미분할 때 미리 계산된 미분을 사용하는 방법입니다.</p>
-<div class="proof remark admonition" id="remark-0">
+<div class="proof remark admonition" id="backpropagation">
 <p class="admonition-title"><span class="caption-number">Remark 1 </span></p>
 <section class="remark-content" id="proof-content">
 <p>역전파 (backpropagation) 알고리즘은 reverse-mode AD를 지칭합니다.</p>

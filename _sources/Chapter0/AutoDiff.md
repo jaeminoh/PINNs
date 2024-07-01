@@ -4,6 +4,7 @@
 Automatic Differentiation (AD)는 "간단한" 함수들의 미분을 미리 계산해두고, $f$를 미분할 때 미리 계산된 미분을 사용하는 방법입니다.
 
 ```{prf:remark}
+:label: backpropagation
 역전파 (backpropagation) 알고리즘은 reverse-mode AD를 지칭합니다.
 ```
 

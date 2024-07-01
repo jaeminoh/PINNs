@@ -1,1 +1,1 @@
-# Speed up techniques
+# Physics-informed neural networks

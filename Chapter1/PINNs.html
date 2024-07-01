@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Automatic Differentation: Practice &#8212; 모두를 위한 Physics-informed neural networks</title>
+    <title>PDEs &#8212; 모두를 위한 Physics-informed neural networks</title>
   
   
   
@@ -60,11 +60,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter0/AutoDiff_practice';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter1/PINNs';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Physics-informed neural networks" href="../Chapter1/main.html" />
-    <link rel="prev" title="Automatic Differentiation" href="AutoDiff.html" />
+    <link rel="next" title="Speed up techniques" href="../Chapter5/main.html" />
+    <link rel="prev" title="Physics-informed neural networks" href="main.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +145,7 @@
     
   
 
-<a class="navbar-brand logo" href="../Isolated/Introduction.html">
+<a class="navbar-brand logo" href="../Introduction.html">
   
   
   
@@ -171,26 +171,20 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../Isolated/Introduction.html">
+                <a class="reference internal" href="../Introduction.html">
                     Introduction
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Preliminaries</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="AutoDiff.html">Automatic Differentiation</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Automatic Differentation: Practice</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter1/main.html">Physics-informed neural networks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter1/PhysicsInformedLoss.html">Physics-informed loss</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Physics-informed neural networks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">PDEs</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter5/SPINNs.html">Separable Physics-informed Neural Networks</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../Isolated/References.html">References</a></li>
 </ul>
 
     </div>
@@ -262,7 +256,7 @@
       
       
       
-      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FChapter0/AutoDiff_practice.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FChapter1/PINNs.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -292,7 +286,7 @@
       
       
       
-      <li><a href="../_sources/Chapter0/AutoDiff_practice.ipynb" target="_blank"
+      <li><a href="../_sources/Chapter1/PINNs.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +296,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -363,9 +357,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -376,19 +368,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Automatic Differentation: Practice</h1>
+    <h1>PDEs</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">속도 비교</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -398,118 +382,77 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="automatic-differentation-practice">
-<h1>Automatic Differentation: Practice<a class="headerlink" href="#automatic-differentation-practice" title="Link to this heading">#</a></h1>
-<p>JAX를 통해 연습하겠습니다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jax</span>  <span class="c1"># AD library JAX를 import 합니다.</span>
-<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>  <span class="c1"># jnp는 numpy와 &quot;거의&quot; 같습니다.</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="id1">
-<h2>속도 비교<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="AutoDiff.html#speed-forward-vs-reverse"><span class="std std-ref">여기</span></a>에서 설명되었듯이,
-<span class="math notranslate nohighlight">\(d_\mathrm{in} &lt; d_\mathrm{out}\)</span>인 경우 forward mode가 빠르고
-반대의 경우 reverse mode가 빠릅니다.</p>
-<p>먼저 <span class="math notranslate nohighlight">\(d_\mathrm{in} &lt; d_\mathrm{out}\)</span>인 경우를 테스트 하겠습니다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span> 
-    <span class="c1"># scalar를 받아서 [1, x, ..., x^9999]를 리턴하는 함수, d_in &lt; d_out</span>
-    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
-
-<span class="n">f_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">f_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>함수 <code class="docutils literal notranslate"><span class="pre">f</span></code>의 경우 <span class="math notranslate nohighlight">\(d_\mathrm{in} = 1 \ll d_\mathrm{out} = 10^4\)</span> 이므로, forward mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">f_fwd</span></code>가 reverse mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">f_rev</span></code>보다 빨라야 합니다.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="pdes">
+<h1>PDEs<a class="headerlink" href="#pdes" title="Link to this heading">#</a></h1>
+<p>편미분방정식이 다음과 같이 있다고 하겠습니다.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8b4c209a-b046-4325-96f1-0056e99fcd2e">
+<span class="eqno">(1)<a class="headerlink" href="#equation-8b4c209a-b046-4325-96f1-0056e99fcd2e" title="Permalink to this equation">#</a></span>\[\begin{align}
+    \mathcal{D}[u](x) &amp; = f(x), \quad x \in \Omega, \\
+    \mathcal{B}[u](x) &amp; = g(x), \quad x \in \partial \Omega.
+\end{align}\]</div>
+<p>여기서 <span class="math notranslate nohighlight">\(u\)</span>는 편미분방정식의 해,
+<span class="math notranslate nohighlight">\(\mathcal{D}\)</span>은 differential operator,
+<span class="math notranslate nohighlight">\(\sigma\)</span>는 surface measure,
+그리고 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>는 boundary condition을 나타냅니다.</p>
 <div class="proof remark admonition" id="remark-0">
-<p class="admonition-title"><span class="caption-number">Remark 2 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 1 </span></p>
 <section class="remark-content" id="proof-content">
-<p>시간을 잴 함수를 <code class="docutils literal notranslate"><span class="pre">jax.jit</span></code>에 통과시키면 JIT 컴파일이 되고, 계산 속도가 빨리집니다.</p>
+<p>Evolutionary equation의 경우 <span class="math notranslate nohighlight">\(t\)</span>를 <span class="math notranslate nohighlight">\(x\)</span>에 포함시켜 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>가 initial condition도 나타내게 할 수 있습니다.</p>
 </section>
-</div><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">f_fwd</span><span class="p">)</span> <span class="c1"># compile</span>
-<span class="n">f_fwd</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># warmup</span>
-<span class="o">%</span><span class="k">timeit</span> f_fwd(x).block_until_ready()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-07-01 22:13:48.131226: W external/xla/xla/service/gpu/nvptx_compiler.cc:765] The NVIDIA driver&#39;s CUDA version is 12.4 which is older than the ptxas CUDA version (12.5.40). Because the driver is older than the ptxas version, XLA is disabling parallel compilation, which may slow down compilation. You should update your NVIDIA driver or use the NVIDIA-provided CUDA forward compatibility packages.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>108 μs ± 9.5 μs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">f_rev</span><span class="p">)</span>
-<span class="n">f_rev</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="o">%</span><span class="k">timeit</span> f_rev(x).block_until_ready()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>253 μs ± 10.8 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">y</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-    <span class="c1"># array를 받아서 제곱한 후 평균을 취하는 함수, d_in &gt; d_out</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="n">g_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-<span class="n">g_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10000</span><span class="p">,))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">f_fwd</span></code>가 약 두배 정도 빠른 것을 볼 수 있습니다.</p>
-<p>반면, 함수 <code class="docutils literal notranslate"><span class="pre">g</span></code>의 경우 <span class="math notranslate nohighlight">\(d_\mathrm{in} = 10^4 \gg d_\mathrm{out} = 1\)</span> 이므로, reverse mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">g_rev</span></code>가 forward mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">g_fwd</span></code> 보다 빨라야 합니다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">g_fwd</span><span class="p">)</span>
-<span class="n">g_fwd</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="o">%</span><span class="k">timeit</span> g_fwd(y).block_until_ready()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>253 μs ± 8.38 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">g_rev</span><span class="p">)</span>
-<span class="n">g_rev</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="o">%</span><span class="k">timeit</span> g_rev(y).block_until_ready()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>76.9 μs ± 7.07 μs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">g_rev</span></code>가 약 두배 정도 빠른 것을 볼 수 있습니다.</p>
+</div><p>Physics-informed loss를 정의하겠습니다.</p>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Physics-informed loss <span class="math notranslate nohighlight">\(\mathcal{L}_\mathrm{PINN}(\theta)\)</span>는 다음과 같이 정의한다.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \mathcal{L}_\mathrm{PINN}(\theta) = \int_\Omega \left( \mathcal{D}[u_\theta](x) - f(x) \right)^2 dx + \lambda \int_{\partial\Omega} \left( \mathcal{B}[u_\theta](x) - g(x) \right)^2 d\sigma(x)
+\end{equation*}\]</div>
 </section>
+</div><p>이 때 physics-informed neural networks는 다음을 만족하는 network parameter <span class="math notranslate nohighlight">\(\theta^\star\)</span>를 찾는 방법입니다.</p>
+<div class="math notranslate nohighlight">
+\[    \theta^\star = \arg \min_{\theta} \mathcal{L}_\mathrm{PINN}(\theta)\]</div>
+<p>하지만, <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>은 적분을 통해 정의되어 있기에 값을 정확하게 구하는 것은 쉽지 않습니다.
+따라서 quadrature rule을 통해 적분 값을 approximation하게 됩니다.</p>
+<div class="proof definition admonition" id="definition-2">
+<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Quadrature rule은 다음과 같습니다.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \int_a^b f(x) dx \approx \sum_{i=1}^N w_i f(x_i).
+\end{equation*}\]</div>
+</section>
+</div><p>PINN 분야에서 가장 흔하게 쓰는 quadrature rule은 Monte-Carlo 입니다.
+단순하게 <span class="math notranslate nohighlight">\(x_i\)</span>를 random distribution에서 뽑고, 그 점들에서 integrand를 evaluation한 값들에 평균을 취하면 됩니다.
+사실 domain의 크기만큼을 평균낸 값에 곱해줘야 하지만, 이는 현재 크게 중요하지 않으므로 넘어가겠습니다.</p>
+<p>정리하면, (empirical) PINN loss는 다음과 같습니다.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    L_\mathrm{PINN}(\theta) = \frac{1}{N_r}\sum_{i=1}^{N_r} \left( \mathcal{D}[u_\theta](x_{i,r}) - f(x_{i,r}) \right)^2 + \frac{\lambda}{N_{b}}\sum_{j=1}^{N_b} \left( \mathcal{B}[u_\theta](x_{j,b}) - g(x_{j,b})\right)^2.
+\end{equation*}\]</div>
+<p>이를 minimize 하는 방법은 다양하지만, 보통 adam optimizer를 많이 사용합니다 <span id="id1">[<a class="reference internal" href="../Chapter5/SPINNs.html#id19" title="Diederik P Kingma and Jimmy Ba. Adam: a method for stochastic optimization. arXiv preprint arXiv:1412.6980, 2014.">Kingma and Ba, 2014</a>]</span>.
+다른 선택으로는 L-BFGS가 있습니다 <span id="id2">[<a class="reference internal" href="../Chapter5/SPINNs.html#id82" title="Dong C Liu and Jorge Nocedal. On the limited memory bfgs method for large scale optimization. Mathematical programming, 45(1):503–528, 1989.">Liu and Nocedal, 1989</a>]</span>.</p>
+<div class="docutils container" id="id3">
+<div role="list" class="citation-list">
+<div class="citation" id="id21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>CNY+24<span class="fn-bracket">]</span></span>
+<p>Junwoo Cho, Seungtae Nam, Hyunmo Yang, Seok-Bae Yun, Youngjoon Hong, and Eunbyung Park. Separable physics-informed neural networks. <em>Advances in Neural Information Processing Systems</em>, 2024.</p>
+</div>
+<div class="citation" id="id19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">KB14</a><span class="fn-bracket">]</span></span>
+<p>Diederik P Kingma and Jimmy Ba. Adam: a method for stochastic optimization. <em>arXiv preprint arXiv:1412.6980</em>, 2014.</p>
+</div>
+<div class="citation" id="id82" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">LN89</a><span class="fn-bracket">]</span></span>
+<p>Dong C Liu and Jorge Nocedal. On the limited memory bfgs method for large scale optimization. <em>Mathematical programming</em>, 45(1):503–528, 1989.</p>
+</div>
+<div class="citation" id="id24" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>WJX22<span class="fn-bracket">]</span></span>
+<p>Yifan Wang, Pengzhan Jin, and Hehu Xie. Tensor neural network and its numerical integration. <em>arXiv preprint arXiv:2207.02754</em>, 2022.</p>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -525,7 +468,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./Chapter0"
+            path: "./Chapter1"
         },
         predefinedOutput: true
     }
@@ -543,20 +486,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="AutoDiff.html"
+       href="main.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Automatic Differentiation</p>
+        <p class="prev-next-title">Physics-informed neural networks</p>
       </div>
     </a>
     <a class="right-next"
-       href="../Chapter1/main.html"
+       href="../Chapter5/main.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Physics-informed neural networks</p>
+        <p class="prev-next-title">Speed up techniques</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -566,21 +509,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">속도 비교</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
