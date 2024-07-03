@@ -2,12 +2,16 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: Introduction
+root: Isolated/Introduction
 chapters:
 - file: Chapter0/main
   sections:
   - file: Chapter0/AutoDiff
-  - file: Chapter0/AutoDiff_practice
+  - file: Chapter0/pratice_AutoDiff
 - file: Chapter1/main
   sections:
-  - file: Chapter1/SPINNs
+  - file: Chapter1/PoissonEquation
+- file: Chapter5/main
+  sections:
+  - file: Chapter5/SPINNs
+- file: Isolated/References
