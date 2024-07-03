@@ -1,8 +1,13 @@
 # Introduction
-2017년에 arxiv에 처음 등장한 논문 physics-informed neural networks (PINNs)에서 시작된 physics-informed machine learning (PIML)은 전 세계적으로 많은 관심을 받고 있는 머신러닝 / 수치해석의 한 분야입니다.
+Physics-informed neural networks (PINNs)는 2018년 11월에 "The journal of computational physics"에 온라인 버전으로 처음 등장했습니다 {cite}`raissi2019physics`.
+이는 neural networks 모델에 미분방정식 관련 정보를 추가하는 방법으로, 곧이어 일반적인 머신러닝 모델에 물리적 정보를 추가하는 framework인
+physics-informed machine learning (PIML) {cite}`karniadakis2021physics`으로 일반화되었습니다.
+이 연구는 전세계적으로 많은 관심을 받았습니다.
+제가 PINNs 논문을 처음으로 접한 2022년 11월에, 인용 횟수는 5000회 정도 였습니다 (인용 횟수 기준으로 gPC 논문보다 아래에 있었음).
+2024년 7월 3일 Google Scholar 기준으로 인용 횟수는 거의 두배가 되었습니다 (9621).
 하지만 안타깝게도 한글로 된 자료가 아직 많지 않습니다.
 
-이 저장소의 목적은 **한글로 된 physics-informed neural networks 강의를 만드는 것**입니다.
+이 책의 목적은 **한글로 된 physics-informed neural networks 강의를 만드는 것**입니다.
 
 강의의 제목은 제가 처음 머신러닝을 접하게 된 계기인 [모두를 위한 머신러닝](https://hunkim.github.io/ml/)에서 따왔습니다.
 
@@ -22,33 +27,6 @@ PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 
 학습 속도를 개선하는데 있어 forward mode AD가 상당히 중요한 역할을 하는 만큼, 본 강의에서는 머신 러닝 라이브러리로 JAX를 사용합니다.
 
 
-## 목차
-0. 배경 지식
-    - 미분방정식
-    - 인공신경망
-    - Automatic Differentiation 
-1. Physics-informed neural networks 소개
-    - 라플라스 방정식
-    - 포아송 방정식
-    - 열 방정식
-2. 학습이 잘 되지 않는 경우 소개
-    - Advection 방정식
-    - 헬름홀츠 방정식
-3. 학습이 잘 되지 않는 이유에 대한 설명
-    - Gradient Pathology
-    - Neural Tangent Kernel
-4. 학습 개선 전략들
-    - Sine activation function
-    - Gradient Enhanced Training (a.k.a. Sobolev Training)
-    - Learning Rate Annealing
-    - Causal Weighting
-    - R3 Sampling
-    - 그 외
-5. 학습 속도 향상 전략들
-    - Taylor mode AD
-    - Separable PINNs
-
-
 ## [JAX](https://jax.readthedocs.io/en/latest/index.html) 관련 문서들
 - [JAX 설치](https://jax.readthedocs.io/en/latest/installation.html)
 - [Optax - Gradient Descent based Optimizers](https://optax.readthedocs.io/en/latest/)
@@ -56,5 +34,5 @@ PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 
 
 
 ## Etc
-- 질문이 있으시다면 issue나 discussion에 작성, 혹은 메일 부탁드립니다.
-- 모든 코드는 Ruff Linter를 사용합니다.
+- [email](mailto:jaeminoh.math@gmail.com)
+- 어떤 종류의 PR도 환영합니다.
