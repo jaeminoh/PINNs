@@ -6,6 +6,8 @@ root: Isolated/Introduction
 chapters:
 - file: Chapter0/main
   sections:
+  - file: Chapter0/NeuralNetworks
+  - file: Chapter0/practice_NeuralNetworks
   - file: Chapter0/AutoDiff
   - file: Chapter0/pratice_AutoDiff
 - file: Chapter1/main
