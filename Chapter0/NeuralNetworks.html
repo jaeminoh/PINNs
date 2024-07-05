@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Automatic Differentation: Practice &#8212; 모두를 위한 Physics-informed neural networks</title>
+    <title>Neural Networks &#8212; 모두를 위한 Physics-informed neural networks</title>
   
   
   
@@ -60,11 +60,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter0/AutoDiff_practice';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter0/NeuralNetworks';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Physics-informed neural networks" href="../Chapter1/main.html" />
-    <link rel="prev" title="Automatic Differentiation" href="AutoDiff.html" />
+    <link rel="next" title="Automatic Differentiation" href="AutoDiff.html" />
+    <link rel="prev" title="Preliminaries" href="main.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,12 +178,13 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Preliminaries</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="AutoDiff.html">Automatic Differentiation</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Automatic Differentation: Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pratice_AutoDiff.html">Practice: Automatic Differentiation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter1/main.html">Physics-informed neural networks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Poisson Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Practice: Poisson Equation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -262,7 +263,7 @@
       
       
       
-      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FChapter0/AutoDiff_practice.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FChapter0/NeuralNetworks.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -292,7 +293,7 @@
       
       
       
-      <li><a href="../_sources/Chapter0/AutoDiff_practice.ipynb" target="_blank"
+      <li><a href="../_sources/Chapter0/NeuralNetworks.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +303,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -376,7 +377,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Automatic Differentation: Practice</h1>
+    <h1>Neural Networks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -386,7 +387,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">속도 비교</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-approximation-theorem">Universal Approximation Theorem</a></li>
 </ul>
             </nav>
         </div>
@@ -398,118 +399,63 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="automatic-differentation-practice">
-<h1>Automatic Differentation: Practice<a class="headerlink" href="#automatic-differentation-practice" title="Link to this heading">#</a></h1>
-<p>JAX를 통해 연습하겠습니다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jax</span>  <span class="c1"># AD library JAX를 import 합니다.</span>
-<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>  <span class="c1"># jnp는 numpy와 &quot;거의&quot; 같습니다.</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="id1">
-<h2>속도 비교<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="AutoDiff.html#speed-forward-vs-reverse"><span class="std std-ref">여기</span></a>에서 설명되었듯이,
-<span class="math notranslate nohighlight">\(d_\mathrm{in} &lt; d_\mathrm{out}\)</span>인 경우 forward mode가 빠르고
-반대의 경우 reverse mode가 빠릅니다.</p>
-<p>먼저 <span class="math notranslate nohighlight">\(d_\mathrm{in} &lt; d_\mathrm{out}\)</span>인 경우를 테스트 하겠습니다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span> 
-    <span class="c1"># scalar를 받아서 [1, x, ..., x^9999]를 리턴하는 함수, d_in &lt; d_out</span>
-    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
-
-<span class="n">f_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">f_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>함수 <code class="docutils literal notranslate"><span class="pre">f</span></code>의 경우 <span class="math notranslate nohighlight">\(d_\mathrm{in} = 1 \ll d_\mathrm{out} = 10^4\)</span> 이므로, forward mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">f_fwd</span></code>가 reverse mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">f_rev</span></code>보다 빨라야 합니다.</p>
-<div class="proof remark admonition" id="remark-0">
+  <section class="tex2jax_ignore mathjax_ignore" id="neural-networks">
+<h1>Neural Networks<a class="headerlink" href="#neural-networks" title="Link to this heading">#</a></h1>
+<p>인공신경망 (neural networks)은 affine transformation, 그리고 nonlinear activation function의 반복된 합성입니다.
+Affine transformation의 횟수를 depth, affine transformation의 output dimension을 width라고 합니다.
+이 함수를 fully connected neural networks (FNNs) 혹은 multi-layer perceptrons (MLPs)라고 부릅니다.</p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>아키텍쳐 <span class="math notranslate nohighlight">\([n_0, n_1, \dots, n_d]\)</span>, activation function <span class="math notranslate nohighlight">\(\phi\)</span>가 있을 때,
+MLP는 다음 함수로 정의합니다.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \mathrm{MLP}(x;\theta) = A^d \circ \left( \phi \circ A^{d-1} \right) \circ \cdots \circ \left( \phi \circ A^1 \right)(x).
+\end{equation*}\]</div>
+<p>여기서 <span class="math notranslate nohighlight">\(A^i(h) = W^i h + b^i\)</span>로, <span class="math notranslate nohighlight">\(W^i \in \mathbb{R}^{n_i \times n_{i-1}}\)</span> 그리고 <span class="math notranslate nohighlight">\(b^i \in \mathbb{R}^{n_i}\)</span> 입니다.
+또한 activation function은 component-wise하게 계산합니다.
+<span class="math notranslate nohighlight">\(\theta\)</span>는 네트워크 파라미터들의 집합 <span class="math notranslate nohighlight">\(\{(W^i, b^i)|i=1, \dots, d\}\)</span>을 나타냅니다.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-1">
+<p class="admonition-title"><span class="caption-number">Remark 1 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Affine transformation <span class="math notranslate nohighlight">\(A^i(h) = W^i h + b^i\)</span>는 matrix <span class="math notranslate nohighlight">\(W^i\)</span>와 vector <span class="math notranslate nohighlight">\(h\)</span>의 곱을 포함하고 있습니다.
+이 matrix-vector product의 계산 복잡도는 <span class="math notranslate nohighlight">\(\mathcal{O}(n_i n_{i-1})\)</span> 입니다.
+이는 graphical processing unit (GPU)에서 굉장히 빠르게 계산할 수 있습니다.
+왜 large scale deep learning에서 GPU가 꼭 필요한지,
+왜 checkpointing 같은 방법에서 affine hidden layer output들을 저장하는지 등의 이유가 여기에 있습니다.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-2">
 <p class="admonition-title"><span class="caption-number">Remark 2 </span></p>
 <section class="remark-content" id="proof-content">
-<p>시간을 잴 함수를 <code class="docutils literal notranslate"><span class="pre">jax.jit</span></code>에 통과시키면 JIT 컴파일이 되고, 계산 속도가 빨리집니다.</p>
+<p>현대적 deep learning에서는 더 복잡하고 거대한 구조의 neural network를 사용합니다.
+하지만 본 책에서 다룰 문제들에 있어서는 MLP마저 polynomial-based 방법들보다 훨씬 model의 복잡도가 크고, 느립니다.</p>
 </section>
-</div><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">f_fwd</span><span class="p">)</span> <span class="c1"># compile</span>
-<span class="n">f_fwd</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># warmup</span>
-<span class="o">%</span><span class="k">timeit</span> f_fwd(x).block_until_ready()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-07-01 22:35:18.261795: W external/xla/xla/service/gpu/nvptx_compiler.cc:765] The NVIDIA driver&#39;s CUDA version is 12.4 which is older than the ptxas CUDA version (12.5.40). Because the driver is older than the ptxas version, XLA is disabling parallel compilation, which may slow down compilation. You should update your NVIDIA driver or use the NVIDIA-provided CUDA forward compatibility packages.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>105 μs ± 1.3 μs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">f_rev</span><span class="p">)</span>
-<span class="n">f_rev</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="o">%</span><span class="k">timeit</span> f_rev(x).block_until_ready()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>256 μs ± 2.16 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">y</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-    <span class="c1"># array를 받아서 제곱한 후 평균을 취하는 함수, d_in &gt; d_out</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="n">g_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-<span class="n">g_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10000</span><span class="p">,))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">f_fwd</span></code>가 약 두배 정도 빠른 것을 볼 수 있습니다.</p>
-<p>반면, 함수 <code class="docutils literal notranslate"><span class="pre">g</span></code>의 경우 <span class="math notranslate nohighlight">\(d_\mathrm{in} = 10^4 \gg d_\mathrm{out} = 1\)</span> 이므로, reverse mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">g_rev</span></code>가 forward mode로 미분한 함수 <code class="docutils literal notranslate"><span class="pre">g_fwd</span></code> 보다 빨라야 합니다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g_fwd</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">g_fwd</span><span class="p">)</span>
-<span class="n">g_fwd</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="o">%</span><span class="k">timeit</span> g_fwd(y).block_until_ready()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>242 μs ± 3.95 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g_rev</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">g_rev</span><span class="p">)</span>
-<span class="n">g_rev</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="o">%</span><span class="k">timeit</span> g_rev(y).block_until_ready()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>74.6 μs ± 200 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">g_rev</span></code>가 약 두배 정도 빠른 것을 볼 수 있습니다.</p>
+</div><section id="universal-approximation-theorem">
+<h2>Universal Approximation Theorem<a class="headerlink" href="#universal-approximation-theorem" title="Link to this heading">#</a></h2>
+<div class="proof theorem admonition" id="theorem-3">
+<span id="thm-universal-approximation-theorem"></span><p class="admonition-title"><span class="caption-number">Theorem 1 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Universal approximation theorem.</p>
+<p>어떤 compact domain <span class="math notranslate nohighlight">\(\Omega\)</span>에서 정의된 연속함수 <span class="math notranslate nohighlight">\(f\)</span>가 있고
+에러 레벨 <span class="math notranslate nohighlight">\(\epsilon\)</span>이 주어졌을 때</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \sup_{x\in \Omega}|\mathrm{MLP}(x;\theta) - f(x)| &lt; \epsilon
+\end{equation*}\]</div>
+<p>을 만족하는 <span class="math notranslate nohighlight">\(\theta\)</span>를 항상 찾을 수 있습니다.</p>
 </section>
+</div><div class="proof remark admonition" id="remark-4">
+<p class="admonition-title"><span class="caption-number">Remark 3 </span></p>
+<section class="remark-content" id="proof-content">
+<p>간혹 universal approximation theorem이 인공신경망이 잘 동작하는 이유가 된다는 설명을 듣곤 합니다.
+하지만 이는 틀린 설명입니다.
+사실 polynomial들도 universal approximation theorem을 만족합니다.
+만약 위 설명이 맞다면, polynomial-based 모델들도 neural network 만큼 퍼포먼스를 내 줘야 합니다.
+Universal approximation theorem은 단지 최소한의 이론적인 보장일 뿐입니다.</p>
+</section>
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -543,20 +489,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="AutoDiff.html"
+       href="main.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Automatic Differentiation</p>
+        <p class="prev-next-title">Preliminaries</p>
       </div>
     </a>
     <a class="right-next"
-       href="../Chapter1/main.html"
+       href="AutoDiff.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Physics-informed neural networks</p>
+        <p class="prev-next-title">Automatic Differentiation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -576,7 +522,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">속도 비교</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-approximation-theorem">Universal Approximation Theorem</a></li>
 </ul>
   </nav></div>
 

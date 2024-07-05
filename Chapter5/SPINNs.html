@@ -178,12 +178,13 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter0/main.html">Preliminaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter0/NeuralNetworks.html">Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/AutoDiff.html">Automatic Differentiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter0/AutoDiff_practice.html">Automatic Differentation: Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter0/pratice_AutoDiff.html">Practice: Automatic Differentiation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter1/main.html">Physics-informed neural networks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Poisson Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Practice: Poisson Equation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Speed up techniques</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -409,7 +410,7 @@ forward pass의 횟수가 <span class="math notranslate nohighlight">\(O(N^d)\)<
 높은 dimension의 rectilinear grid에서 매우 빠른 계산 속도를 보여주게 됩니다.
 이는 singular value decomposition, 혹은 canonical polyadic decomposition으로도 잘 알려져 있는 방법입니다.</p>
 <div class="proof remark admonition" id="remark-TensorNeuralNetworks">
-<p class="admonition-title"><span class="caption-number">Remark 5 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 8 </span></p>
 <section class="remark-content" id="proof-content">
 <p>Tensor neural networks (TNNs)라는 이름으로도 알려져 있으나 <span id="id2">[<a class="reference internal" href="../Isolated/References.html#id22" title="Yifan Wang, Pengzhan Jin, and Hehu Xie. Tensor neural network and its numerical integration. arXiv preprint arXiv:2207.02754, 2022.">Wang <em>et al.</em>, 2022</a>]</span>, arXiv에 등장한 날짜 기준으로 SPINNs가 몇개월 정도 빠릅니다.
 또한 TNN은 CANDECOMP의 형태만 사용함에도 불구하고 “tensor”라는 일반적인 이름을 붙였습니다.

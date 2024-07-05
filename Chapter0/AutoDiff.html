@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter0/AutoDiff';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Automatic Differentation: Practice" href="AutoDiff_practice.html" />
-    <link rel="prev" title="Preliminaries" href="main.html" />
+    <link rel="next" title="Practice: Automatic Differentiation" href="pratice_AutoDiff.html" />
+    <link rel="prev" title="Neural Networks" href="NeuralNetworks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,12 +178,13 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Preliminaries</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="NeuralNetworks.html">Neural Networks</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Automatic Differentiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="AutoDiff_practice.html">Automatic Differentation: Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pratice_AutoDiff.html">Practice: Automatic Differentiation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter1/main.html">Physics-informed neural networks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Poisson Equation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Practice: Poisson Equation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -410,7 +411,7 @@ document.write(`
 예를 들어 인공신경망은 덧셈, 곱셈, 그리고 activation function이라는 “간단한” 함수들의 합성으로 이루어져 있습니다.
 Automatic Differentiation (AD)는 “간단한” 함수들의 미분을 미리 계산해두고, <span class="math notranslate nohighlight">\(f\)</span>를 미분할 때 미리 계산된 미분을 사용하는 방법입니다.</p>
 <div class="proof remark admonition" id="backpropagation">
-<p class="admonition-title"><span class="caption-number">Remark 1 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 4 </span></p>
 <section class="remark-content" id="proof-content">
 <p>역전파 (backpropagation) 알고리즘은 reverse-mode AD를 지칭합니다.</p>
 </section>
@@ -442,7 +443,7 @@ Forward mode와 reverse mode입니다.
 <h2>Dual numbers<a class="headerlink" href="#dual-numbers" title="Link to this heading">#</a></h2>
 <p>Forward mode AD를 잘 이해하기 위해서는 dual number가 무엇인지 알 필요가 있습니다.</p>
 <div class="proof definition admonition" id="dual-numbers">
-<p class="admonition-title"><span class="caption-number">Definition 1 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
 <section class="definition-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(\epsilon^2 = 0\)</span>인 수 <span class="math notranslate nohighlight">\(\epsilon\)</span>이 있습니다.
 그리고 두 실수 <span class="math notranslate nohighlight">\(p\)</span> 그리고 <span class="math notranslate nohighlight">\(t\)</span>가 있습니다.
@@ -473,7 +474,7 @@ Forward mode와 reverse mode입니다.
 </section>
 </div><p>사실, 위 정의는 다음 정의의 특별한 경우입니다.</p>
 <div class="proof definition admonition" id="definition-3">
-<p class="admonition-title"><span class="caption-number">Definition 2 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 3 </span></p>
 <section class="definition-content" id="proof-content">
 <p>함수 <span class="math notranslate nohighlight">\(f\)</span>가 있을 때,</p>
 <div class="amsmath math notranslate nohighlight">
@@ -559,20 +560,20 @@ Forward mode와 reverse mode입니다.
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="main.html"
+       href="NeuralNetworks.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Preliminaries</p>
+        <p class="prev-next-title">Neural Networks</p>
       </div>
     </a>
     <a class="right-next"
-       href="AutoDiff_practice.html"
+       href="pratice_AutoDiff.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Automatic Differentation: Practice</p>
+        <p class="prev-next-title">Practice: Automatic Differentiation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

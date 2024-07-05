@@ -178,6 +178,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter0/main.html">Preliminaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter0/NeuralNetworks.html">Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/AutoDiff.html">Automatic Differentiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/pratice_AutoDiff.html">Practice: Automatic Differentiation</a></li>
 </ul>
@@ -412,8 +413,8 @@ document.write(`
 <section id="physics-informed-loss">
 <h2>Physics-informed loss<a class="headerlink" href="#physics-informed-loss" title="Link to this heading">#</a></h2>
 <p>다음과 같은 편미분방정식이 있습니다.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cd5cd0a2-753c-4905-bbbe-f2f6a8745f10">
-<span class="eqno">(2)<a class="headerlink" href="#equation-cd5cd0a2-753c-4905-bbbe-f2f6a8745f10" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6ee5f95b-9559-41ed-b73f-5817b40b01d7">
+<span class="eqno">(2)<a class="headerlink" href="#equation-6ee5f95b-9559-41ed-b73f-5817b40b01d7" title="Permalink to this equation">#</a></span>\[\begin{align}
     \mathcal{D}[u](x) &amp; = f(x), \quad x \in \Omega, \\
     \mathcal{B}[u](x) &amp; = g(x), \quad x \in \partial \Omega.
 \end{align}\]</div>
@@ -422,13 +423,13 @@ document.write(`
 <span class="math notranslate nohighlight">\(\sigma\)</span>는 surface measure,
 그리고 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>는 boundary condition을 나타냅니다.</p>
 <div class="proof remark admonition" id="remark-EvolutionaryEquations">
-<p class="admonition-title"><span class="caption-number">Remark 3 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 6 </span></p>
 <section class="remark-content" id="proof-content">
 <p>Evolutionary equation의 경우 <span class="math notranslate nohighlight">\(t\)</span>를 <span class="math notranslate nohighlight">\(x\)</span>에 포함시켜 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>가 initial condition도 나타내게 할 수 있습니다.</p>
 </section>
 </div><p>Physics-informed loss를 정의하겠습니다.</p>
 <div class="proof definition admonition" id="definition-1">
-<p class="admonition-title"><span class="caption-number">Definition 3 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Physics-informed loss <span class="math notranslate nohighlight">\(\mathcal{L}_\mathrm{PINN}(\theta)\)</span>는 다음과 같이 정의한다.</p>
 <div class="amsmath math notranslate nohighlight">
@@ -440,14 +441,14 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[    \theta^\star = \arg \min_{\theta} \mathcal{L}_\mathrm{PINN}(\theta)\]</div>
 <div class="proof remark admonition" id="remark-2">
-<p class="admonition-title"><span class="caption-number">Remark 4 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 7 </span></p>
 <section class="remark-content" id="proof-content">
 <p>만약 <span class="math notranslate nohighlight">\(\mathcal{L}_\mathrm{PINN}(\theta^\star) = 0\)</span>이라면 <span class="math notranslate nohighlight">\(u_{\theta^\star}\)</span>는 almost everywhere 미분방정식을 만족하게 되므로 미분방정식의 해가 됩니다.</p>
 </section>
 </div><p>하지만, <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>은 적분을 통해 정의되어 있기에 값을 정확하게 구하는 것은 쉽지 않습니다.
 따라서 quadrature rule을 통해 적분 값을 approximation하게 됩니다.</p>
 <div class="proof definition admonition" id="definition-3">
-<p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 5 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Quadrature rule은 다음과 같습니다.</p>
 <div class="amsmath math notranslate nohighlight">
