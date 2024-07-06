@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -176,12 +176,17 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter0/main.html">Preliminaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/NeuralNetworks.html">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter0/practice_NeuralNetworks.html">Practice: Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/AutoDiff.html">Automatic Differentiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/pratice_AutoDiff.html">Practice: Automatic Differentiation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter1/main.html">Physics-informed neural networks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Practice: Poisson Equation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter2/main.html">Limitations of PINNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter2/Failures.html">Failures</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -394,6 +399,10 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>CNY+24<span class="fn-bracket">]</span></span>
 <p>Junwoo Cho, Seungtae Nam, Hyunmo Yang, Seok-Bae Yun, Youngjoon Hong, and Eunbyung Park. Separable physics-informed neural networks. <em>Advances in Neural Information Processing Systems</em>, 2024.</p>
 </div>
+<div class="citation" id="id85" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>JGH18<span class="fn-bracket">]</span></span>
+<p>Arthur Jacot, Franck Gabriel, and Clément Hongler. Neural tangent kernel: convergence and generalization in neural networks. <em>Advances in neural information processing systems</em>, 2018.</p>
+</div>
 <div class="citation" id="id81" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>KKL+21<span class="fn-bracket">]</span></span>
 <p>George Em Karniadakis, Ioannis G Kevrekidis, Lu Lu, Paris Perdikaris, Sifan Wang, and Liu Yang. Physics-informed machine learning. <em>Nature Reviews Physics</em>, 3(6):422–440, 2021.</p>
@@ -401,6 +410,14 @@ document.write(`
 <div class="citation" id="id17" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>KB14<span class="fn-bracket">]</span></span>
 <p>Diederik P Kingma and Jimmy Ba. Adam: a method for stochastic optimization. <em>arXiv preprint arXiv:1412.6980</em>, 2014.</p>
+</div>
+<div class="citation" id="id77" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KGZ+21<span class="fn-bracket">]</span></span>
+<p>Aditi Krishnapriyan, Amir Gholami, Shandian Zhe, Robert Kirby, and Michael W Mahoney. Characterizing possible failure modes in physics-informed neural networks. In M. Ranzato, A. Beygelzimer, Y. Dauphin, P.S. Liang, and J. Wortman Vaughan, editors, <em>Advances in Neural Information Processing Systems</em>, volume 34, 26548–26560. Curran Associates, Inc., 2021. URL: <a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2021/file/df438e5206f31600e6ae4af72f2725f1-Paper.pdf">https://proceedings.neurips.cc/paper_files/paper/2021/file/df438e5206f31600e6ae4af72f2725f1-Paper.pdf</a>.</p>
+</div>
+<div class="citation" id="id84" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LBN+17<span class="fn-bracket">]</span></span>
+<p>Jaehoon Lee, Yasaman Bahri, Roman Novak, Samuel S Schoenholz, Jeffrey Pennington, and Jascha Sohl-Dickstein. Deep neural networks as gaussian processes. <em>arXiv preprint arXiv:1711.00165</em>, 2017.</p>
 </div>
 <div class="citation" id="id80" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>LN89<span class="fn-bracket">]</span></span>
@@ -410,6 +427,10 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>MullerZ23<span class="fn-bracket">]</span></span>
 <p>Johannes Müller and Marius Zeinhofer. Achieving high accuracy with pinns via energy natural gradient descent. In <em>International Conference on Machine Learning</em>, 25471–25485. PMLR, 2023.</p>
 </div>
+<div class="citation" id="id86" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>OCY+24<span class="fn-bracket">]</span></span>
+<p>Jaemin Oh, Seung Yeon Cho, Seok-Bae Yun, Eunbyung Park, and Youngjoon Hong. Separable physics-informed neural networks for solving the bgk model of the boltzmann equation. <em>arXiv preprint arXiv:2403.06342</em>, 2024.</p>
+</div>
 <div class="citation" id="id28" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>RPK19<span class="fn-bracket">]</span></span>
 <p>Maziar Raissi, Paris Perdikaris, and George E Karniadakis. Physics-informed neural networks: a deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations. <em>Journal of Computational physics</em>, 378:686–707, 2019.</p>
@@ -417,6 +438,14 @@ document.write(`
 <div class="citation" id="id82" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>Tib96<span class="fn-bracket">]</span></span>
 <p>Robert Tibshirani. Regression shrinkage and selection via the lasso. <em>Journal of the Royal Statistical Society Series B: Statistical Methodology</em>, 58(1):267–288, 1996.</p>
+</div>
+<div class="citation" id="id65" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>WTP21<span class="fn-bracket">]</span></span>
+<p>Sifan Wang, Yujun Teng, and Paris Perdikaris. Understanding and mitigating gradient flow pathologies in physics-informed neural networks. <em>SIAM Journal on Scientific Computing</em>, 43(5):A3055–A3081, 2021.</p>
+</div>
+<div class="citation" id="id78" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>WYP22<span class="fn-bracket">]</span></span>
+<p>Sifan Wang, Xinling Yu, and Paris Perdikaris. When and why pinns fail to train: a neural tangent kernel perspective. <em>Journal of Computational Physics</em>, 449:110768, 2022.</p>
 </div>
 <div class="citation" id="id22" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>WJX22<span class="fn-bracket">]</span></span>

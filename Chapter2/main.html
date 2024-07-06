@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Speed up techniques &#8212; 모두를 위한 Physics-informed neural networks</title>
+    <title>Limitations of PINNs &#8212; 모두를 위한 Physics-informed neural networks</title>
   
   
   
@@ -60,11 +60,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter5/main';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter2/main';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Separable Physics-informed Neural Networks" href="SPINNs.html" />
-    <link rel="prev" title="Slow Training" href="../Chapter2/Slow.html" />
+    <link rel="next" title="Failures" href="Failures.html" />
+    <link rel="prev" title="Practice: Poisson Equation" href="../Chapter1/PoissonEquation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,13 +188,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Practice: Poisson Equation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter2/main.html">Limitations of PINNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter2/Failures.html">Failures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter2/Slow.html">Slow Training</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Limitations of PINNs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Failures.html">Failures</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Speed up techniques</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="SPINNs.html">Separable Physics-informed Neural Networks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter5/SPINNs.html">Separable Physics-informed Neural Networks</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../Isolated/References.html">References</a></li>
@@ -269,7 +268,7 @@
       
       
       
-      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FChapter5/main.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FChapter2/main.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -299,7 +298,7 @@
       
       
       
-      <li><a href="../_sources/Chapter5/main.md" target="_blank"
+      <li><a href="../_sources/Chapter2/main.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -370,7 +369,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -381,11 +382,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Speed up techniques</h1>
+    <h1>Limitations of PINNs</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slow-training">Slow Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-failures">Training Failures</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -395,8 +405,45 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="speed-up-techniques">
-<h1>Speed up techniques<a class="headerlink" href="#speed-up-techniques" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="limitations-of-pinns">
+<h1>Limitations of PINNs<a class="headerlink" href="#limitations-of-pinns" title="Link to this heading">#</a></h1>
+<p>본 챕터에서는 현재 PINN이 가지고 있는 단점들을 설명합니다.</p>
+<p>PINN은 크게 두 가지 카테고리의 문제점이 있습니다.</p>
+<ol class="arabic simple">
+<li><p>Training이 느립니다.</p></li>
+<li><p>Training이 실패하는 경우가 꽤 많습니다.</p></li>
+</ol>
+<section id="slow-training">
+<h2>Slow Training<a class="headerlink" href="#slow-training" title="Link to this heading">#</a></h2>
+<p>미분방정식의 해를 수치적으로 구한다는 관점에서 보면, PINN은 classical methods보다 <strong>훨씬</strong> 느립니다.
+Classical method들은 대부분 미분방정식을 선형대수 문제로 만들고,
+이미 개발된 빠르고 정확한 알고리즘들을 가져다 사용하면 되기 때문입니다.
+반면 PINN은 미분방정식을 optimization 문제로 만듭니다.
+Convexity, linearity 둘 다 없기 때문에 보통 해결하기 복잡한 문제입니다.</p>
+<p>예를 들어, 이전 챕터에서 공부한 1d Poisson equation의 경우
+PINN은 GPU에서 1분 남짓이 걸렸지만,
+Central difference finite difference method는 1초도 걸리지 않습니다.
+따라서 현재 PDE를 푸는데 PINNs를 이용하는 것은 그리 바람직하다고 볼 수 없습니다.
+Super high dimension으로 가게 되면 또 할 말이 생길 수 있겠습니다만,
+적어도 (6 + 1) 차원 (e.g. Boltzmann equation) 까지는 polynomial-based 방법보다 느립니다 <span id="id1">[<a class="reference internal" href="../Isolated/References.html#id86" title="Jaemin Oh, Seung Yeon Cho, Seok-Bae Yun, Eunbyung Park, and Youngjoon Hong. Separable physics-informed neural networks for solving the bgk model of the boltzmann equation. arXiv preprint arXiv:2403.06342, 2024.">Oh <em>et al.</em>, 2024</a>]</span>.</p>
+<p>그럼에도 불구하고 본 책은 PINN을 통해 미분방정식을 푸는 방법에 대해 설명하고 있습니다.
+정확히는 PINN loss를 minimization 하는 방법에 대해 설명하고 있다고 보아야 합니다.
+부적절한 minimization 방법을 사용해 미분방정식 정보를 machine learning 모델에 주입하게 된다면
+퍼포먼스에 도움은 커녕 부정적인 영향을 끼칠 수 있기 때문입니다.
+또한 PINN loss에 대해서 지식이 쌓이다 보면 classical numerical method보다 좋은 퍼포먼스를 낼 수 있는 알고리즘이 나올지도 모르는 일입니다.</p>
+</section>
+<section id="training-failures">
+<h2>Training Failures<a class="headerlink" href="#training-failures" title="Link to this heading">#</a></h2>
+<p>Optimization이 잘 되어서 (ideal) PINN loss 가 정확하게 <span class="math notranslate nohighlight">\(0\)</span>이 된다면 아무런 문제가 없습니다.
+하지만 symbolic 계산을 하는 것이 아니라면, 어려가지 이유 때문에 정확하게 <span class="math notranslate nohighlight">\(0\)</span>을 달성할 수는 없습니다.
+심지어, loss가 잘 줄어든 것 처럼 보이지만 미분방정식의 해를 잘 approximation하지 못하는 경우도 있습니다 <span id="id2">[<a class="reference internal" href="../Isolated/References.html#id77" title="Aditi Krishnapriyan, Amir Gholami, Shandian Zhe, Robert Kirby, and Michael W Mahoney. Characterizing possible failure modes in physics-informed neural networks. In M. Ranzato, A. Beygelzimer, Y. Dauphin, P.S. Liang, and J. Wortman Vaughan, editors, Advances in Neural Information Processing Systems, volume 34, 26548–26560. Curran Associates, Inc., 2021. URL: https://proceedings.neurips.cc/paper_files/paper/2021/file/df438e5206f31600e6ae4af72f2725f1-Paper.pdf.">Krishnapriyan <em>et al.</em>, 2021</a>]</span>.
+본 챕터에서는 이 경우를 중점적으로 설명합니다.</p>
+<div class="proof remark admonition" id="remark-0">
+<p class="admonition-title"><span class="caption-number">Remark 8 </span></p>
+<section class="remark-content" id="proof-content">
+<p>PINN loss를 minimization 하는 것을 보통 optimization 이라고 부르고, machine learning community에서는 training이라고 부릅니다.</p>
+</section>
+</div></section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -414,7 +461,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./Chapter5"
+            path: "./Chapter2"
         },
         predefinedOutput: true
     }
@@ -432,20 +479,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Chapter2/Slow.html"
+       href="../Chapter1/PoissonEquation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Slow Training</p>
+        <p class="prev-next-title">Practice: Poisson Equation</p>
       </div>
     </a>
     <a class="right-next"
-       href="SPINNs.html"
+       href="Failures.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Separable Physics-informed Neural Networks</p>
+        <p class="prev-next-title">Failures</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -455,6 +502,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slow-training">Slow Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-failures">Training Failures</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

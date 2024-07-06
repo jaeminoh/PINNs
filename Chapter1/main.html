@@ -179,12 +179,18 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter0/main.html">Preliminaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/NeuralNetworks.html">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter0/practice_NeuralNetworks.html">Practice: Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/AutoDiff.html">Automatic Differentiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/pratice_AutoDiff.html">Practice: Automatic Differentiation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Physics-informed neural networks</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="PoissonEquation.html">Practice: Poisson Equation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter2/main.html">Limitations of PINNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter2/Failures.html">Failures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter2/Slow.html">Slow Training</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -413,8 +419,8 @@ document.write(`
 <section id="physics-informed-loss">
 <h2>Physics-informed loss<a class="headerlink" href="#physics-informed-loss" title="Link to this heading">#</a></h2>
 <p>다음과 같은 편미분방정식이 있습니다.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6ee5f95b-9559-41ed-b73f-5817b40b01d7">
-<span class="eqno">(2)<a class="headerlink" href="#equation-6ee5f95b-9559-41ed-b73f-5817b40b01d7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-67fa611b-2c53-42cb-8bcd-998a53ed01ed">
+<span class="eqno">(2)<a class="headerlink" href="#equation-67fa611b-2c53-42cb-8bcd-998a53ed01ed" title="Permalink to this equation">#</a></span>\[\begin{align}
     \mathcal{D}[u](x) &amp; = f(x), \quad x \in \Omega, \\
     \mathcal{B}[u](x) &amp; = g(x), \quad x \in \partial \Omega.
 \end{align}\]</div>
@@ -428,7 +434,7 @@ document.write(`
 <p>Evolutionary equation의 경우 <span class="math notranslate nohighlight">\(t\)</span>를 <span class="math notranslate nohighlight">\(x\)</span>에 포함시켜 <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>가 initial condition도 나타내게 할 수 있습니다.</p>
 </section>
 </div><p>Physics-informed loss를 정의하겠습니다.</p>
-<div class="proof definition admonition" id="definition-1">
+<div class="proof definition admonition" id="ideal-PINN-Loss">
 <p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Physics-informed loss <span class="math notranslate nohighlight">\(\mathcal{L}_\mathrm{PINN}(\theta)\)</span>는 다음과 같이 정의한다.</p>

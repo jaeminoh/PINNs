@@ -29,8 +29,9 @@ Affine transformation $A^i(h) = W^i h + b^i$는 matrix $W^i$와 vector $h$의 �
 
 
 ## Universal Approximation Theorem
-(thm:universal-approximation-theorem)=
 ```{prf:theorem}
+:label: universal-approximation-theorem
+
 Universal approximation theorem.
 
 어떤 compact domain $\Omega$에서 정의된 연속함수 $f$가 있고

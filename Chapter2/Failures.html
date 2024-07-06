@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Speed up techniques &#8212; 모두를 위한 Physics-informed neural networks</title>
+    <title>Failures &#8212; 모두를 위한 Physics-informed neural networks</title>
   
   
   
@@ -60,11 +60,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter5/main';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter2/Failures';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Separable Physics-informed Neural Networks" href="SPINNs.html" />
-    <link rel="prev" title="Slow Training" href="../Chapter2/Slow.html" />
+    <link rel="next" title="Slow Training" href="Slow.html" />
+    <link rel="prev" title="Limitations of PINNs" href="main.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,13 +188,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Practice: Poisson Equation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter2/main.html">Limitations of PINNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter2/Failures.html">Failures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter2/Slow.html">Slow Training</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Limitations of PINNs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Failures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Slow.html">Slow Training</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Speed up techniques</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="SPINNs.html">Separable Physics-informed Neural Networks</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter5/SPINNs.html">Separable Physics-informed Neural Networks</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../Isolated/References.html">References</a></li>
@@ -269,7 +269,7 @@
       
       
       
-      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FChapter5/main.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FChapter2/Failures.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -299,7 +299,7 @@
       
       
       
-      <li><a href="../_sources/Chapter5/main.md" target="_blank"
+      <li><a href="../_sources/Chapter2/Failures.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -370,7 +370,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -381,11 +383,24 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Speed up techniques</h1>
+    <h1>Failures</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressibility-issues">Expressibility Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-issues">Optimization Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-pathologies">Gradient Pathologies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-tangent-kernel-perspectives">Neural Tangent Kernel Perspectives</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -395,10 +410,51 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="speed-up-techniques">
-<h1>Speed up techniques<a class="headerlink" href="#speed-up-techniques" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="failures">
+<h1>Failures<a class="headerlink" href="#failures" title="Link to this heading">#</a></h1>
+<p>PINN은 결국 neural network를 통해 PINN Loss <a class="reference internal" href="../Chapter1/main.html#equation-pinn-loss">(3)</a>를 줄여서 neural network에 미분방정식 정보를 주입하는 방법입니다.
+하지만 실제로 PINN을 통해 미분방정식을 풀어보려고 시도하면, 생각보다 잘 되지 않습니다.
+여기에는 크게 두가지 이유가 있습니다.</p>
+<ol class="arabic simple">
+<li><p>model의 expressibility 부족 문제</p></li>
+<li><p>Optimization 문제</p></li>
+</ol>
+<section id="expressibility-issues">
+<h2>Expressibility Issues<a class="headerlink" href="#expressibility-issues" title="Link to this heading">#</a></h2>
+<p>만약 미분방정식의 해가 엄청 복잡한 함수라면, 보통 model의 parameter 개수를 충분히 많도록 해 주어야 합니다.
+충분하지 않다면, <a class="reference internal" href="../Chapter0/NeuralNetworks.html#universal-approximation-theorem">Theorem 1</a>을 만족하지 못하고, model이 해를 잘 approximation 할 수 있다는 이론적 보장이 깨지게 됩니다.</p>
+</section>
+<section id="optimization-issues">
+<h2>Optimization Issues<a class="headerlink" href="#optimization-issues" title="Link to this heading">#</a></h2>
+<p>PINN loss의 minimum을 찾는 일은 간단하지 않습니다.
+Neural network를 model로 사용할 경우에 PINN loss는 non-convex objective function입니다.
+이 경우 gradient descent가 global minimum으로 수렴한다는 이론적인 보장은 없습니다.</p>
+<section id="gradient-pathologies">
+<h3>Gradient Pathologies<a class="headerlink" href="#gradient-pathologies" title="Link to this heading">#</a></h3>
+<p>PINN training이 실패하는 이유를 gradient flow의 eigenvalue bias로 설명할 수 있습니다 <span id="id1">[<a class="reference internal" href="../Isolated/References.html#id65" title="Sifan Wang, Yujun Teng, and Paris Perdikaris. Understanding and mitigating gradient flow pathologies in physics-informed neural networks. SIAM Journal on Scientific Computing, 43(5):A3055–A3081, 2021.">Wang <em>et al.</em>, 2021</a>]</span>.
+간단한 아이디어입니다.
+Adam과 같은 optimizer는 gradient descent 기반 방법입니다.
+Gradient descent는 gradient flow를 forward Euler 방법으로 time discretization 하면 얻을 수 있습니다.
+따라서 gradient flow를 분석하면, gradient descent에 대한 정보를 얻을 수 있습니다.</p>
+<div class="proof definition admonition" id="definition-0">
+<span id="def-gradient-flow"></span><p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Model parameter <span class="math notranslate nohighlight">\(\theta\)</span>에 대한 gradient flow는 다음과 같이 정의합니다.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \frac{d\theta(t)}{dt} = - \nabla_\theta L_\mathrm{PINN}(\theta(t)).
+\end{equation*}\]</div>
+</section>
+</div></section>
+<section id="neural-tangent-kernel-perspectives">
+<h3>Neural Tangent Kernel Perspectives<a class="headerlink" href="#neural-tangent-kernel-perspectives" title="Link to this heading">#</a></h3>
+<p>Gradient flow는 gradient descent에서 step size <span class="math notranslate nohighlight">\(\eta\)</span>를 아주 작게 했을 때 얻을 수 있었습니다.
+한편, neural network의 width를 한없이 크게 늘리게 되면 Gaussian process가 된다는 연구결과가 있습니다 <span id="id2">[<a class="reference internal" href="../Isolated/References.html#id84" title="Jaehoon Lee, Yasaman Bahri, Roman Novak, Samuel S Schoenholz, Jeffrey Pennington, and Jascha Sohl-Dickstein. Deep neural networks as gaussian processes. arXiv preprint arXiv:1711.00165, 2017.">Lee <em>et al.</em>, 2017</a>]</span>.
+이를 통해서 neural network를 이론적으로 분석하는 방법 중 하나가 neural tangent kernel theory 입니다 <span id="id3">[<a class="reference internal" href="../Isolated/References.html#id85" title="Arthur Jacot, Franck Gabriel, and Clément Hongler. Neural tangent kernel: convergence and generalization in neural networks. Advances in neural information processing systems, 2018.">Jacot <em>et al.</em>, 2018</a>]</span>.
+같은 analysis를 PINN에도 적용해 볼 수 있습니다.
+그 결과가 <span id="id4">[<a class="reference internal" href="../Isolated/References.html#id78" title="Sifan Wang, Xinling Yu, and Paris Perdikaris. When and why pinns fail to train: a neural tangent kernel perspective. Journal of Computational Physics, 449:110768, 2022.">Wang <em>et al.</em>, 2022</a>]</span>에 정리되어 있습니다.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -414,7 +470,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./Chapter5"
+            path: "./Chapter2"
         },
         predefinedOutput: true
     }
@@ -432,20 +488,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Chapter2/Slow.html"
+       href="main.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Slow Training</p>
+        <p class="prev-next-title">Limitations of PINNs</p>
       </div>
     </a>
     <a class="right-next"
-       href="SPINNs.html"
+       href="Slow.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Separable Physics-informed Neural Networks</p>
+        <p class="prev-next-title">Slow Training</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -455,6 +511,26 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressibility-issues">Expressibility Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-issues">Optimization Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-pathologies">Gradient Pathologies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-tangent-kernel-perspectives">Neural Tangent Kernel Perspectives</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
