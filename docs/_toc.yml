@@ -13,6 +13,9 @@ chapters:
 - file: Chapter1/main
   sections:
   - file: Chapter1/PoissonEquation
+- file: Chapter2/main
+  sections:
+  - file: Chapter2/Failures
 - file: Chapter5/main
   sections:
   - file: Chapter5/SPINNs

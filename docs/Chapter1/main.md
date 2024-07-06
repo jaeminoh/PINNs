@@ -27,6 +27,7 @@ Evolutionary equation의 경우 $t$를 $x$에 포함시켜 $\mathcal{B}$가 init
 
 Physics-informed loss를 정의하겠습니다.
 ```{prf:definition}
+:label: ideal-PINN-Loss
 Physics-informed loss $\mathcal{L}_\mathrm{PINN}(\theta)$는 다음과 같이 정의한다.
 \begin{equation*}
     \mathcal{L}_\mathrm{PINN}(\theta) = \int_\Omega \left( \mathcal{D}[u_\theta](x) - f(x) \right)^2 dx + \lambda \int_{\partial\Omega} \left( \mathcal{B}[u_\theta](x) - g(x) \right)^2 d\sigma(x).
