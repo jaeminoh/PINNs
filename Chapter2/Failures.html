@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter2/Failures';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Slow Training" href="Slow.html" />
+    <link rel="next" title="Speed up techniques" href="../Chapter5/main.html" />
     <link rel="prev" title="Limitations of PINNs" href="main.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,6 +180,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter0/main.html">Preliminaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/NeuralNetworks.html">Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/practice_NeuralNetworks.html">Practice: Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter0/DifferentialEquations.html">Differential Equation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/AutoDiff.html">Automatic Differentiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/pratice_AutoDiff.html">Practice: Automatic Differentiation</a></li>
 </ul>
@@ -190,11 +191,11 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Limitations of PINNs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Failures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Slow.html">Slow Training</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter5/SPINNs.html">Separable Physics-informed Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter5/TaylorAD.html">Taylor Mode Automatic Differentiation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../Isolated/References.html">References</a></li>
@@ -437,7 +438,7 @@ Adam과 같은 optimizer는 gradient descent 기반 방법입니다.
 Gradient descent는 gradient flow를 forward Euler 방법으로 time discretization 하면 얻을 수 있습니다.
 따라서 gradient flow를 분석하면, gradient descent에 대한 정보를 얻을 수 있습니다.</p>
 <div class="proof definition admonition" id="definition-0">
-<span id="def-gradient-flow"></span><p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
+<span id="def-gradient-flow"></span><p class="admonition-title"><span class="caption-number">Definition 7 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Model parameter <span class="math notranslate nohighlight">\(\theta\)</span>에 대한 gradient flow는 다음과 같이 정의합니다.</p>
 <div class="amsmath math notranslate nohighlight">
@@ -497,11 +498,11 @@ Gradient descent는 gradient flow를 forward Euler 방법으로 time discretizat
       </div>
     </a>
     <a class="right-next"
-       href="Slow.html"
+       href="../Chapter5/main.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Slow Training</p>
+        <p class="prev-next-title">Speed up techniques</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

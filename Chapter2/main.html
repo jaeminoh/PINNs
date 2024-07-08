@@ -180,6 +180,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter0/main.html">Preliminaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/NeuralNetworks.html">Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/practice_NeuralNetworks.html">Practice: Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter0/DifferentialEquations.html">Differential Equation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/AutoDiff.html">Automatic Differentiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/pratice_AutoDiff.html">Practice: Automatic Differentiation</a></li>
 </ul>
@@ -194,6 +195,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter5/SPINNs.html">Separable Physics-informed Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter5/TaylorAD.html">Taylor Mode Automatic Differentiation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../Isolated/References.html">References</a></li>
@@ -413,7 +415,12 @@ document.write(`
 <li><p>Training이 느립니다.</p></li>
 <li><p>Training이 실패하는 경우가 꽤 많습니다.</p></li>
 </ol>
-<section id="slow-training">
+<div class="proof remark admonition" id="remark-0">
+<p class="admonition-title"><span class="caption-number">Remark 8 </span></p>
+<section class="remark-content" id="proof-content">
+<p>PINN loss를 minimization 하는 것을 보통 optimization 이라고 부르고, machine learning community에서는 training이라고 부릅니다.</p>
+</section>
+</div><section id="slow-training">
 <h2>Slow Training<a class="headerlink" href="#slow-training" title="Link to this heading">#</a></h2>
 <p>미분방정식의 해를 수치적으로 구한다는 관점에서 보면, PINN은 classical methods보다 <strong>훨씬</strong> 느립니다.
 Classical method들은 대부분 미분방정식을 선형대수 문제로 만들고,
@@ -438,12 +445,7 @@ Super high dimension으로 가게 되면 또 할 말이 생길 수 있겠습니�
 하지만 symbolic 계산을 하는 것이 아니라면, 어려가지 이유 때문에 정확하게 <span class="math notranslate nohighlight">\(0\)</span>을 달성할 수는 없습니다.
 심지어, loss가 잘 줄어든 것 처럼 보이지만 미분방정식의 해를 잘 approximation하지 못하는 경우도 있습니다 <span id="id2">[<a class="reference internal" href="../Isolated/References.html#id77" title="Aditi Krishnapriyan, Amir Gholami, Shandian Zhe, Robert Kirby, and Michael W Mahoney. Characterizing possible failure modes in physics-informed neural networks. In M. Ranzato, A. Beygelzimer, Y. Dauphin, P.S. Liang, and J. Wortman Vaughan, editors, Advances in Neural Information Processing Systems, volume 34, 26548–26560. Curran Associates, Inc., 2021. URL: https://proceedings.neurips.cc/paper_files/paper/2021/file/df438e5206f31600e6ae4af72f2725f1-Paper.pdf.">Krishnapriyan <em>et al.</em>, 2021</a>]</span>.
 본 챕터에서는 이 경우를 중점적으로 설명합니다.</p>
-<div class="proof remark admonition" id="remark-0">
-<p class="admonition-title"><span class="caption-number">Remark 8 </span></p>
-<section class="remark-content" id="proof-content">
-<p>PINN loss를 minimization 하는 것을 보통 optimization 이라고 부르고, machine learning community에서는 training이라고 부릅니다.</p>
 </section>
-</div></section>
 <div class="toctree-wrapper compound">
 </div>
 </section>

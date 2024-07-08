@@ -179,6 +179,8 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Preliminaries</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="NeuralNetworks.html">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="practice_NeuralNetworks.html">Practice: Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DifferentialEquations.html">Differential Equation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="AutoDiff.html">Automatic Differentiation</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Practice: Automatic Differentiation</a></li>
 </ul>
@@ -187,8 +189,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Practice: Poisson Equation</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter2/main.html">Limitations of PINNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter2/Failures.html">Failures</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter5/SPINNs.html">Separable Physics-informed Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter5/TaylorAD.html">Taylor Mode Automatic Differentiation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../Isolated/References.html">References</a></li>
@@ -444,10 +451,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-07-05 10:05:38.145532: W external/xla/xla/service/gpu/nvptx_compiler.cc:765] The NVIDIA driver&#39;s CUDA version is 12.4 which is older than the ptxas CUDA version (12.5.40). Because the driver is older than the ptxas version, XLA is disabling parallel compilation, which may slow down compilation. You should update your NVIDIA driver or use the NVIDIA-provided CUDA forward compatibility packages.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-07-08 17:27:51.249640: W external/xla/xla/service/gpu/nvptx_compiler.cc:765] The NVIDIA driver&#39;s CUDA version is 12.4 which is older than the ptxas CUDA version (12.5.40). Because the driver is older than the ptxas version, XLA is disabling parallel compilation, which may slow down compilation. You should update your NVIDIA driver or use the NVIDIA-provided CUDA forward compatibility packages.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95.4 μs ± 4.6 μs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>99.9 μs ± 3.15 μs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -461,7 +468,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>233 μs ± 4.65 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>257 μs ± 9.61 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -490,7 +497,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>224 μs ± 6.19 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>243 μs ± 8.67 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -504,7 +511,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>66.5 μs ± 1.61 μs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>75.3 μs ± 2.1 μs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div>
 </div>
 </div>

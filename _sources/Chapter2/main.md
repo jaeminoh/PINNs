@@ -5,6 +5,10 @@ PINN은 크게 두 가지 카테고리의 문제점이 있습니다.
 1. Training이 느립니다.
 2. Training이 실패하는 경우가 꽤 많습니다.
 
+```{prf:remark}
+PINN loss를 minimization 하는 것을 보통 optimization 이라고 부르고, machine learning community에서는 training이라고 부릅니다.
+```
+
 
 ## Slow Training
 미분방정식의 해를 수치적으로 구한다는 관점에서 보면, PINN은 classical methods보다 **훨씬** 느립니다.
@@ -32,7 +36,3 @@ Optimization이 잘 되어서 (ideal) PINN loss {prf:def}`ideal-PINN-Loss`가 �
 하지만 symbolic 계산을 하는 것이 아니라면, 어려가지 이유 때문에 정확하게 $0$을 달성할 수는 없습니다.
 심지어, loss가 잘 줄어든 것 처럼 보이지만 미분방정식의 해를 잘 approximation하지 못하는 경우도 있습니다 {cite}`krishnapriyan2021characterizing`.
 본 챕터에서는 이 경우를 중점적으로 설명합니다.
-
-```{prf:remark}
-PINN loss를 minimization 하는 것을 보통 optimization 이라고 부르고, machine learning community에서는 training이라고 부릅니다.
-```
