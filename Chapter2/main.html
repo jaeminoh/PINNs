@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter2/main';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Failures" href="Failures.html" />
+    <link rel="next" title="Gradient Flow Pathologies" href="GradientFlow.html" />
     <link rel="prev" title="Practice: Poisson Equation" href="../Chapter1/PoissonEquation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,7 +191,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Limitations of PINNs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Failures.html">Failures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="GradientFlow.html">Gradient Flow Pathologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NeuralTangentKernel.html">Neural Tangent Kernel Theory</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -396,7 +397,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slow-training">Slow Training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-failures">Training Failures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-failures">Training Failures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expressibility-issues">Expressibility Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-issues">Optimization Issues</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -446,6 +451,24 @@ Super high dimension으로 가게 되면 또 할 말이 생길 수 있겠습니�
 하지만 symbolic 계산을 하는 것이 아니라면, 어려가지 이유 때문에 정확하게 <span class="math notranslate nohighlight">\(0\)</span>을 달성할 수는 없습니다.
 심지어, loss가 잘 줄어든 것 처럼 보이지만 미분방정식의 해를 잘 approximation하지 못하는 경우도 있습니다 <span id="id2">[<a class="reference internal" href="../Isolated/References.html#id77" title="Aditi Krishnapriyan, Amir Gholami, Shandian Zhe, Robert Kirby, and Michael W Mahoney. Characterizing possible failure modes in physics-informed neural networks. In M. Ranzato, A. Beygelzimer, Y. Dauphin, P.S. Liang, and J. Wortman Vaughan, editors, Advances in Neural Information Processing Systems, volume 34, 26548–26560. Curran Associates, Inc., 2021. URL: https://proceedings.neurips.cc/paper_files/paper/2021/file/df438e5206f31600e6ae4af72f2725f1-Paper.pdf.">Krishnapriyan <em>et al.</em>, 2021</a>]</span>.
 본 챕터에서는 이 경우를 중점적으로 설명합니다.</p>
+<p>PINN은 결국 neural network를 통해 PINN Loss <a class="reference internal" href="../Chapter1/main.html#equation-pinn-loss">(3)</a>를 줄여서 neural network에 미분방정식 정보를 주입하는 방법입니다.
+하지만 실제로 PINN을 통해 미분방정식을 풀어보려고 시도하면, 생각보다 잘 되지 않습니다.
+여기에는 크게 두가지 이유가 있습니다.</p>
+<ol class="arabic simple">
+<li><p>model의 expressibility 부족 문제</p></li>
+<li><p>Optimization 문제</p></li>
+</ol>
+<section id="expressibility-issues">
+<h3>Expressibility Issues<a class="headerlink" href="#expressibility-issues" title="Link to this heading">#</a></h3>
+<p>만약 미분방정식의 해가 엄청 복잡한 함수라면, 보통 model의 parameter 개수를 충분히 많도록 해 주어야 합니다.
+충분하지 않다면, <a class="reference internal" href="../Chapter0/NeuralNetworks.html#universal-approximation-theorem">Theorem 1</a>을 만족하지 못하고, model이 해를 잘 approximation 할 수 있다는 이론적 보장이 깨지게 됩니다.</p>
+</section>
+<section id="optimization-issues">
+<h3>Optimization Issues<a class="headerlink" href="#optimization-issues" title="Link to this heading">#</a></h3>
+<p>PINN loss의 minimum을 찾는 일은 간단하지 않습니다.
+Neural network를 model로 사용할 경우에 PINN loss는 non-convex objective function입니다.
+이 경우 gradient descent가 global minimum으로 수렴한다는 이론적인 보장은 없습니다.</p>
+</section>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -491,11 +514,11 @@ Super high dimension으로 가게 되면 또 할 말이 생길 수 있겠습니�
       </div>
     </a>
     <a class="right-next"
-       href="Failures.html"
+       href="GradientFlow.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Failures</p>
+        <p class="prev-next-title">Gradient Flow Pathologies</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -516,7 +539,11 @@ Super high dimension으로 가게 되면 또 할 말이 생길 수 있겠습니�
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slow-training">Slow Training</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-failures">Training Failures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-failures">Training Failures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expressibility-issues">Expressibility Issues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-issues">Optimization Issues</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; 모두를 위한 Physics-informed neural networks</title>
+    <title>Gradient Flow Pathologies &#8212; 모두를 위한 Physics-informed neural networks</title>
   
   
   
@@ -60,10 +60,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Isolated/Introduction';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter2/GradientFlow';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Preliminaries" href="../Chapter0/main.html" />
+    <link rel="next" title="Neural Tangent Kernel Theory" href="NeuralTangentKernel.html" />
+    <link rel="prev" title="Limitations of PINNs" href="main.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,8 +127,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -146,7 +145,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="../Isolated/Introduction.html">
   
   
   
@@ -171,13 +170,13 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Isolated/Introduction.html">
                     Introduction
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter0/main.html">Preliminaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/NeuralNetworks.html">Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/practice_NeuralNetworks.html">Practice: Neural Networks</a></li>
@@ -191,9 +190,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Practice: Poisson Equation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter2/main.html">Limitations of PINNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter2/GradientFlow.html">Gradient Flow Pathologies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter2/NeuralTangentKernel.html">Neural Tangent Kernel Theory</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Limitations of PINNs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Gradient Flow Pathologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NeuralTangentKernel.html">Neural Tangent Kernel Theory</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -201,7 +200,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../Chapter5/TaylorAD.html">Taylor Mode Automatic Differentiation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Isolated/References.html">References</a></li>
 </ul>
 
     </div>
@@ -273,7 +272,7 @@
       
       
       
-      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FIsolated/Introduction.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FChapter2/GradientFlow.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -303,7 +302,7 @@
       
       
       
-      <li><a href="../_sources/Isolated/Introduction.md" target="_blank"
+      <li><a href="../_sources/Chapter2/GradientFlow.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -387,7 +386,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>Gradient Flow Pathologies</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -397,10 +396,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-language-python">Programming Language: Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-library-jax">Machine Learning Library: JAX</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jax">JAX 관련 문서들</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etc">Etc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stiff-equations">Stiff Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-flow">Gradient Flow</a></li>
 </ul>
             </nav>
         </div>
@@ -412,48 +409,115 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p>Physics-informed neural networks (PINNs)는 2018년 11월에 “The journal of computational physics”에 온라인 버전으로 처음 등장했습니다 <span id="id1">[<a class="reference internal" href="References.html#id28" title="Maziar Raissi, Paris Perdikaris, and George E Karniadakis. Physics-informed neural networks: a deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations. Journal of Computational physics, 378:686–707, 2019.">Raissi <em>et al.</em>, 2019</a>]</span>.
-이는 neural networks 모델에 미분방정식 관련 정보를 추가하는 방법으로, 곧이어 일반적인 머신러닝 모델에 물리적 정보를 추가하는 framework인
-physics-informed machine learning (PIML) <span id="id2">[<a class="reference internal" href="References.html#id81" title="George Em Karniadakis, Ioannis G Kevrekidis, Lu Lu, Paris Perdikaris, Sifan Wang, and Liu Yang. Physics-informed machine learning. Nature Reviews Physics, 3(6):422–440, 2021.">Karniadakis <em>et al.</em>, 2021</a>]</span>으로 일반화되었습니다.
-이 연구는 전세계적으로 많은 관심을 받았습니다.
-제가 PINNs 논문을 처음으로 접한 2022년 11월에, 인용 횟수는 5000회 정도 였습니다 (인용 횟수 기준으로 gPC 논문보다 아래에 있었음).
-2024년 7월 3일 Google Scholar 기준으로 인용 횟수는 거의 두배가 되었습니다 (9621).
-하지만 안타깝게도 한글로 된 자료가 아직 많지 않습니다.</p>
-<p>이 책의 목적은 <strong>한글로 된 physics-informed neural networks 강의를 만드는 것</strong>입니다.</p>
-<p>강의의 제목은 제가 처음 머신러닝을 접하게 된 계기인 <a class="reference external" href="https://hunkim.github.io/ml/">모두를 위한 머신러닝</a>에서 따왔습니다.</p>
-<section id="programming-language-python">
-<h2>Programming Language: Python<a class="headerlink" href="#programming-language-python" title="Link to this heading">#</a></h2>
-<p>대부분의 머신러닝 연구는 Python, 그 중에서도 PyTorch를 기반으로 이루어집니다.
-Julia와 같은 더 최근 language를 사용할 수도 있겠지만, 아무래도 사용 방법이 Python 만큼 간단하지는 않습니다.
-따라서 본 강의에서는 Python을 주된 프로그래밍 언어로 사용합니다.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="gradient-flow-pathologies">
+<h1>Gradient Flow Pathologies<a class="headerlink" href="#gradient-flow-pathologies" title="Link to this heading">#</a></h1>
+<section id="stiff-equations">
+<h2>Stiff Equations<a class="headerlink" href="#stiff-equations" title="Link to this heading">#</a></h2>
+<p>Time dependent 미분 방정식은 일반적으로 다음 형태를 가집니다.</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{d}{dt}y(t) = f(t, y(t)), \quad y(0) = y_0.
+\]</div>
+<p>이와 같은 방정식은 먼저 time step을 잘게 쪼갠 다음,
+time grid 위에서 방정식을 discretize 하고,
+적당한 update rule을 따라서 discretized solution을 구하게 됩니다.
+수 없이 많은 discretization 방법이 있지만, 그 중에서 가장 간단한 forward Euler 방법만을 살펴보겠습니다.</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{y^{n+1} - y^n}{\Delta t} = f(t^n, y^n).
+\]</div>
+<p>우변이 <span class="math notranslate nohighlight">\(y^{n+1}\)</span>에 depend하지 않습니다.
+이런 방법을 explicit method라고 합니다.
+만약 우변의 <span class="math notranslate nohighlight">\(y^n\)</span>을 <span class="math notranslate nohighlight">\(y^{n+1}\)</span>로 바꾼다면, 이는 implicit methods 중의 하나인 backward Euler 방법이 됩니다.</p>
+<p>미분방정식이 stiff하다는 것의 의미는, explicit method가 잘 작동하지 않는다는 뜻입니다.
+다음 예를 보겠습니다.</p>
+<div class="proof example admonition" id="example-ode-1">
+<p class="admonition-title"><span class="caption-number">Example 3 </span> (Stiff Ordinary Differential Equation)</p>
+<section class="example-content" id="proof-content">
+<div class="math notranslate nohighlight">
+\[
+    y'(t) = -a y(t), \quad a &gt; 0, \quad t \ge 0, \quad y(0) = y_0.
+\]</div>
+<p>이 방정식의 해는 <span class="math notranslate nohighlight">\(y(t) = y_0 e^{-at}\)</span>입니다.
+해를 이미 알고 있지만, stiffness가 무엇인지 설명하기 위해 이를 forward Euler 방법으로 푼다고 생각해보겠습니다.
+Forward Euler update rule에 해당되는 점화식 (recurrence relation)은 다음과 같습니다.</p>
+<div class="math notranslate nohighlight">
+\[
+    y^{n+1} = (1 - a \Delta t)y^n.
+\]</div>
+<p>만약 <span class="math notranslate nohighlight">\(|1 - a \Delta t| \ge 1\)</span>이라면, 수열 <span class="math notranslate nohighlight">\(\{ y^n \}\)</span>은 발산합니다.
+따라서 <span class="math notranslate nohighlight">\(|1 - a \Delta t | &lt; 1\)</span>이란 조건이 필요합니다.
+정리하면</p>
+<div class="math notranslate nohighlight">
+\[
+    \Delta t &lt; \frac{2}{a}
+\]</div>
+<p>입니다.
+따라서 <span class="math notranslate nohighlight">\(a&gt;0\)</span>가 커질수록, 더 작은 <span class="math notranslate nohighlight">\(\Delta t\)</span>가 필요하게 됩니다.
+반면 backward Euler 방법은 이러한 제약조건이 없습니다.</p>
 </section>
-<section id="machine-learning-library-jax">
-<h2>Machine Learning Library: JAX<a class="headerlink" href="#machine-learning-library-jax" title="Link to this heading">#</a></h2>
-<p>PyTorch가 머신 러닝 연구의 큰 부분을 차지하고 있지만, 적어도 PINNs에 대해서는 JAX에 비해 부족한 부분이 있습니다.
-바로 forward mode automatic differentiation (AD)과 just-in-time (JIT) compilation 입니다.
-PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 두 기능에 대한 PyTorch 유저의 갈증이 어느 정도 해소가 되었습니다.
-그러나 아직 Taylor mode AD 같은 조금 더 고급 툴은 지원이 되지 않습니다.</p>
-<p>학습 속도를 개선하는데 있어 forward mode AD가 상당히 중요한 역할을 하는 만큼, 본 강의에서는 머신 러닝 라이브러리로 JAX를 사용합니다.</p>
+</div><p>이번에는 <span class="math notranslate nohighlight">\(y: [0, \infty) \rightarrow \mathbb{R}^p\)</span>인 경우를 생각해 보겠습니다.</p>
+<div class="proof example admonition" id="example-ode-p">
+<p class="admonition-title"><span class="caption-number">Example 4 </span> (Stiff System of Ordinary Differential Equations)</p>
+<section class="example-content" id="proof-content">
+<div class="math notranslate nohighlight" id="equation-ode-p">
+<span class="eqno">(4)<a class="headerlink" href="#equation-ode-p" title="Link to this equation">#</a></span>\[
+    y'(t) = - A y(t),
+\]</div>
+<p><span class="math notranslate nohighlight">\(A\)</span>는 symmetric positive definite matrix라고 가정하겠습니다.
+(<span class="math notranslate nohighlight">\(a&gt;0\)</span>의 generalization.)</p>
+<p>Eigenvalue decomposition을 통해 <span class="math notranslate nohighlight">\(A = Q \Lambda Q^*\)</span>로 쓸 수 있습니다.
+<span class="math notranslate nohighlight">\(A\)</span>가 symmetric 하기 때문에 <span class="math notranslate nohighlight">\(Q\)</span>가 orthogonal matrix가 되고 <span class="math notranslate nohighlight">\(Q^* = Q^{-1}\)</span>,
+그리고 positive definite이기 때문에 모든 eigenvalue가 양수입니다.
+따라서 <a class="reference internal" href="#equation-ode-p">(4)</a>는 다음과 같이 다시 쓸 수 있습니다.</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{d}{dt}Q^* y(t) = -\Lambda Q^* y(t).
+\]</div>
+<p>여기서 <span class="math notranslate nohighlight">\(z(t) = Q^* y(t)\)</span>라고 하면 위 미분방정식은 decouple 된 <span class="math notranslate nohighlight">\(p\)</span>개의 미분방정식
+$<span class="math notranslate nohighlight">\(
+    z_i'(t) = -\lambda_i z_i(t)
+\)</span>$
+가 됩니다.</p>
+<p><a class="reference internal" href="#example-ode-1">Example 3</a>에서 보았듯이,
+forward Euler 방법은 <span class="math notranslate nohighlight">\(\Delta t &lt; 2 / \max_i \{\lambda_i\}\)</span>라는 조건이 필요합니다.</p>
 </section>
-<section id="jax">
-<h2><a class="reference external" href="https://jax.readthedocs.io/en/latest/index.html">JAX</a> 관련 문서들<a class="headerlink" href="#jax" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://jax.readthedocs.io/en/latest/installation.html">JAX 설치</a></p></li>
-<li><p><a class="reference external" href="https://optax.readthedocs.io/en/latest/">Optax - Gradient Descent based Optimizers</a></p></li>
-<li><p><a class="reference external" href="https://jaxopt.github.io/stable/index.html">JAXopt - General Optimizers</a></p></li>
-</ul>
+</div><div class="proof example admonition" id="example-stiff-pde">
+<p class="admonition-title"><span class="caption-number">Example 5 </span> (Stiff Partial Differential Equation)</p>
+<section class="example-content" id="proof-content">
+<p>Heat equation은 stiff PDE중 하나입니다.</p>
+<div class="math notranslate nohighlight" id="equation-heat">
+<span class="eqno">(5)<a class="headerlink" href="#equation-heat" title="Link to this equation">#</a></span>\[
+    \partial_t u = \partial_x^2 u.
+\]</div>
+<p>먼저 Fourier transform을 <a class="reference internal" href="#equation-heat">(5)</a>의 양변에 취하면 다음을 얻습니다.</p>
+<div class="math notranslate nohighlight">
+\[
+\partial_t \hat{u}(\xi) = (i\xi)^2 \hat{u}(\xi).
+\]</div>
+<p>따라서 forward Euler 방법은 <span class="math notranslate nohighlight">\(\Delta t &lt; 2 / \xi^2\)</span>라는 조건이 필요합니다.
+<span class="math notranslate nohighlight">\(x\)</span> 방향으로 grid를 잘게 자를 수록 <span class="math notranslate nohighlight">\(\xi\)</span>의 값은 커집니다.
+예를 들어 <span class="math notranslate nohighlight">\(x\)</span> 방향으로 <span class="math notranslate nohighlight">\(N\)</span>개의 grid point를 도입했다면, <span class="math notranslate nohighlight">\(\max \xi = N/2\)</span>가 됩니다.
+따라서 <span class="math notranslate nohighlight">\(t\)</span> 방향은 <span class="math notranslate nohighlight">\(\Delta t = O(N{-2})\)</span>를 만족해야 합니다.</p>
 </section>
-<section id="etc">
-<h2>Etc<a class="headerlink" href="#etc" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="mailto:jaeminoh&#46;math&#37;&#52;&#48;gmail&#46;com">email</a></p></li>
-<li><p>어떤 종류의 PR도 환영합니다.</p></li>
-</ul>
+</div></section>
+<section id="gradient-flow">
+<h2>Gradient Flow<a class="headerlink" href="#gradient-flow" title="Link to this heading">#</a></h2>
+<p>PINN training이 실패하는 이유를 gradient flow의 eigenvalue bias로 설명할 수 있습니다 <span id="id1">[<a class="reference internal" href="../Isolated/References.html#id65" title="Sifan Wang, Yujun Teng, and Paris Perdikaris. Understanding and mitigating gradient flow pathologies in physics-informed neural networks. SIAM Journal on Scientific Computing, 43(5):A3055–A3081, 2021.">Wang <em>et al.</em>, 2021</a>]</span>.
+간단한 아이디어입니다.
+Adam과 같은 optimizer는 gradient descent 기반 방법입니다.
+Gradient descent는 gradient flow를 forward Euler 방법으로 time discretization 하면 얻을 수 있습니다.
+따라서 gradient flow를 분석하면, gradient descent에 대한 정보를 얻을 수 있습니다.</p>
+<div class="proof definition admonition" id="definition-3">
+<span id="def-gradient-flow"></span><p class="admonition-title"><span class="caption-number">Definition 9 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Model parameter <span class="math notranslate nohighlight">\(\theta\)</span>에 대한 gradient flow는 다음과 같이 정의합니다.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \frac{d\theta(t)}{dt} = - \nabla_\theta L_\mathrm{PINN}(\theta(t)).
+\end{equation*}\]</div>
 </section>
-<div class="toctree-wrapper compound">
-</div>
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -469,7 +533,7 @@ PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 
         },
         kernelOptions: {
             name: "python3",
-            path: "./Isolated"
+            path: "./Chapter2"
         },
         predefinedOutput: true
     }
@@ -486,12 +550,21 @@ PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="main.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Limitations of PINNs</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="../Chapter0/main.html"
+       href="NeuralTangentKernel.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Preliminaries</p>
+        <p class="prev-next-title">Neural Tangent Kernel Theory</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -511,10 +584,8 @@ PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-language-python">Programming Language: Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-library-jax">Machine Learning Library: JAX</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jax">JAX 관련 문서들</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etc">Etc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stiff-equations">Stiff Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-flow">Gradient Flow</a></li>
 </ul>
   </nav></div>
 

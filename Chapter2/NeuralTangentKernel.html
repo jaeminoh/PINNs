@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; 모두를 위한 Physics-informed neural networks</title>
+    <title>Neural Tangent Kernel Theory &#8212; 모두를 위한 Physics-informed neural networks</title>
   
   
   
@@ -60,10 +60,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Isolated/Introduction';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter2/NeuralTangentKernel';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Preliminaries" href="../Chapter0/main.html" />
+    <link rel="next" title="Speed up techniques" href="../Chapter5/main.html" />
+    <link rel="prev" title="Gradient Flow" href="GradientFlow.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,8 +127,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -146,7 +145,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="../Isolated/Introduction.html">
   
   
   
@@ -171,13 +170,13 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Isolated/Introduction.html">
                     Introduction
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter0/main.html">Preliminaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/NeuralNetworks.html">Neural Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter0/practice_NeuralNetworks.html">Practice: Neural Networks</a></li>
@@ -191,9 +190,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Practice: Poisson Equation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter2/main.html">Limitations of PINNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter2/GradientFlow.html">Gradient Flow Pathologies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter2/NeuralTangentKernel.html">Neural Tangent Kernel Theory</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Limitations of PINNs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="GradientFlow.html">Gradient Flow</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Neural Tangent Kernel Theory</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -201,7 +200,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../Chapter5/TaylorAD.html">Taylor Mode Automatic Differentiation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Isolated/References.html">References</a></li>
 </ul>
 
     </div>
@@ -273,7 +272,7 @@
       
       
       
-      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FIsolated/Introduction.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jaeminoh/PINNs/issues/new?title=Issue%20on%20page%20%2FChapter2/NeuralTangentKernel.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -303,7 +302,7 @@
       
       
       
-      <li><a href="../_sources/Isolated/Introduction.md" target="_blank"
+      <li><a href="../_sources/Chapter2/NeuralTangentKernel.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -387,7 +386,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>Neural Tangent Kernel Theory</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -397,10 +396,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-language-python">Programming Language: Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-library-jax">Machine Learning Library: JAX</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jax">JAX 관련 문서들</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etc">Etc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-tangent-kernel-perspectives">Neural Tangent Kernel Perspectives</a></li>
 </ul>
             </nav>
         </div>
@@ -412,48 +408,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p>Physics-informed neural networks (PINNs)는 2018년 11월에 “The journal of computational physics”에 온라인 버전으로 처음 등장했습니다 <span id="id1">[<a class="reference internal" href="References.html#id28" title="Maziar Raissi, Paris Perdikaris, and George E Karniadakis. Physics-informed neural networks: a deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations. Journal of Computational physics, 378:686–707, 2019.">Raissi <em>et al.</em>, 2019</a>]</span>.
-이는 neural networks 모델에 미분방정식 관련 정보를 추가하는 방법으로, 곧이어 일반적인 머신러닝 모델에 물리적 정보를 추가하는 framework인
-physics-informed machine learning (PIML) <span id="id2">[<a class="reference internal" href="References.html#id81" title="George Em Karniadakis, Ioannis G Kevrekidis, Lu Lu, Paris Perdikaris, Sifan Wang, and Liu Yang. Physics-informed machine learning. Nature Reviews Physics, 3(6):422–440, 2021.">Karniadakis <em>et al.</em>, 2021</a>]</span>으로 일반화되었습니다.
-이 연구는 전세계적으로 많은 관심을 받았습니다.
-제가 PINNs 논문을 처음으로 접한 2022년 11월에, 인용 횟수는 5000회 정도 였습니다 (인용 횟수 기준으로 gPC 논문보다 아래에 있었음).
-2024년 7월 3일 Google Scholar 기준으로 인용 횟수는 거의 두배가 되었습니다 (9621).
-하지만 안타깝게도 한글로 된 자료가 아직 많지 않습니다.</p>
-<p>이 책의 목적은 <strong>한글로 된 physics-informed neural networks 강의를 만드는 것</strong>입니다.</p>
-<p>강의의 제목은 제가 처음 머신러닝을 접하게 된 계기인 <a class="reference external" href="https://hunkim.github.io/ml/">모두를 위한 머신러닝</a>에서 따왔습니다.</p>
-<section id="programming-language-python">
-<h2>Programming Language: Python<a class="headerlink" href="#programming-language-python" title="Link to this heading">#</a></h2>
-<p>대부분의 머신러닝 연구는 Python, 그 중에서도 PyTorch를 기반으로 이루어집니다.
-Julia와 같은 더 최근 language를 사용할 수도 있겠지만, 아무래도 사용 방법이 Python 만큼 간단하지는 않습니다.
-따라서 본 강의에서는 Python을 주된 프로그래밍 언어로 사용합니다.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="neural-tangent-kernel-theory">
+<h1>Neural Tangent Kernel Theory<a class="headerlink" href="#neural-tangent-kernel-theory" title="Link to this heading">#</a></h1>
+<section id="neural-tangent-kernel-perspectives">
+<h2>Neural Tangent Kernel Perspectives<a class="headerlink" href="#neural-tangent-kernel-perspectives" title="Link to this heading">#</a></h2>
+<p>Gradient flow는 gradient descent에서 step size <span class="math notranslate nohighlight">\(\eta\)</span>를 아주 작게 했을 때 얻을 수 있었습니다.
+한편, neural network의 width를 한없이 크게 늘리게 되면 Gaussian process가 된다는 연구결과가 있습니다 <span id="id1">[<a class="reference internal" href="../Isolated/References.html#id84" title="Jaehoon Lee, Yasaman Bahri, Roman Novak, Samuel S Schoenholz, Jeffrey Pennington, and Jascha Sohl-Dickstein. Deep neural networks as gaussian processes. arXiv preprint arXiv:1711.00165, 2017.">Lee <em>et al.</em>, 2017</a>]</span>.
+이를 통해서 neural network를 이론적으로 분석하는 방법 중 하나가 neural tangent kernel theory 입니다 <span id="id2">[<a class="reference internal" href="../Isolated/References.html#id85" title="Arthur Jacot, Franck Gabriel, and Clément Hongler. Neural tangent kernel: convergence and generalization in neural networks. Advances in neural information processing systems, 2018.">Jacot <em>et al.</em>, 2018</a>]</span>.
+같은 analysis를 PINN에도 적용해 볼 수 있습니다.
+그 결과가 <span id="id3">[<a class="reference internal" href="../Isolated/References.html#id78" title="Sifan Wang, Xinling Yu, and Paris Perdikaris. When and why pinns fail to train: a neural tangent kernel perspective. Journal of Computational Physics, 449:110768, 2022.">Wang <em>et al.</em>, 2022</a>]</span>에 정리되어 있습니다.</p>
 </section>
-<section id="machine-learning-library-jax">
-<h2>Machine Learning Library: JAX<a class="headerlink" href="#machine-learning-library-jax" title="Link to this heading">#</a></h2>
-<p>PyTorch가 머신 러닝 연구의 큰 부분을 차지하고 있지만, 적어도 PINNs에 대해서는 JAX에 비해 부족한 부분이 있습니다.
-바로 forward mode automatic differentiation (AD)과 just-in-time (JIT) compilation 입니다.
-PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 두 기능에 대한 PyTorch 유저의 갈증이 어느 정도 해소가 되었습니다.
-그러나 아직 Taylor mode AD 같은 조금 더 고급 툴은 지원이 되지 않습니다.</p>
-<p>학습 속도를 개선하는데 있어 forward mode AD가 상당히 중요한 역할을 하는 만큼, 본 강의에서는 머신 러닝 라이브러리로 JAX를 사용합니다.</p>
-</section>
-<section id="jax">
-<h2><a class="reference external" href="https://jax.readthedocs.io/en/latest/index.html">JAX</a> 관련 문서들<a class="headerlink" href="#jax" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://jax.readthedocs.io/en/latest/installation.html">JAX 설치</a></p></li>
-<li><p><a class="reference external" href="https://optax.readthedocs.io/en/latest/">Optax - Gradient Descent based Optimizers</a></p></li>
-<li><p><a class="reference external" href="https://jaxopt.github.io/stable/index.html">JAXopt - General Optimizers</a></p></li>
-</ul>
-</section>
-<section id="etc">
-<h2>Etc<a class="headerlink" href="#etc" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="mailto:jaeminoh&#46;math&#37;&#52;&#48;gmail&#46;com">email</a></p></li>
-<li><p>어떤 종류의 PR도 환영합니다.</p></li>
-</ul>
-</section>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -469,7 +433,7 @@ PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 
         },
         kernelOptions: {
             name: "python3",
-            path: "./Isolated"
+            path: "./Chapter2"
         },
         predefinedOutput: true
     }
@@ -486,12 +450,21 @@ PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="GradientFlow.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Gradient Flow</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="../Chapter0/main.html"
+       href="../Chapter5/main.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Preliminaries</p>
+        <p class="prev-next-title">Speed up techniques</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -511,10 +484,7 @@ PyTorch 2.0에 들어오면서 jvp 함수와 compile 함수가 생기면서 위 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-language-python">Programming Language: Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-library-jax">Machine Learning Library: JAX</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jax">JAX 관련 문서들</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#etc">Etc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-tangent-kernel-perspectives">Neural Tangent Kernel Perspectives</a></li>
 </ul>
   </nav></div>
 

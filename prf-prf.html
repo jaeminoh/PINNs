@@ -195,7 +195,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Chapter2/main.html">Limitations of PINNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Chapter2/Failures.html">Failures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter2/GradientFlow.html">Gradient Flow Pathologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter2/NeuralTangentKernel.html">Neural Tangent Kernel Theory</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Chapter5/main.html">Speed up techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -361,12 +362,14 @@ document.write(`
    <a href="#cap-def-gradient-descent"><strong>def-gradient-descent</strong></a> | 
    <a href="#cap-def-heat-equation"><strong>def-heat-equation</strong></a> | 
    <a href="#cap-def-newton-method"><strong>def-newton-method</strong></a> | 
-   <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
    <a href="#cap-definition-3"><strong>definition-3</strong></a> | 
    <a href="#cap-dual-numbers"><strong>dual-numbers</strong></a> | 
    <a href="#cap-example-2"><strong>example-2</strong></a> | 
    <a href="#cap-example-4"><strong>example-4</strong></a> | 
    <a href="#cap-example-kuramoto-sivashinsky"><strong>example-kuramoto-sivashinsky</strong></a> | 
+   <a href="#cap-example-ode-1"><strong>example-ode-1</strong></a> | 
+   <a href="#cap-example-ode-p"><strong>example-ode-p</strong></a> | 
+   <a href="#cap-example-stiff-pde"><strong>example-stiff-pde</strong></a> | 
    <a href="#cap-ideal-PINN-Loss"><strong>ideal-PINN-Loss</strong></a> | 
    <a href="#cap-remark-0"><strong>remark-0</strong></a> | 
    <a href="#cap-remark-1"><strong>remark-1</strong></a> | 
@@ -411,20 +414,12 @@ document.write(`
        <a href="Chapter1/Optimization.html#def-newton-method"><code class="xref">def-newton-method</code></a> <em>(Chapter1/Optimization)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-definition-0"><td></td><td>
-       <strong>definition-0</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="Chapter2/Failures.html#definition-0"><code class="xref">definition-0</code></a> <em>(Chapter2/Failures)</em></td><td>
-       <em>definition</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-definition-3"><td></td><td>
        <strong>definition-3</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="Chapter1/main.html#definition-3"><code class="xref">definition-3</code></a> <em>(Chapter1/main)</em></td><td>
+       <a href="Chapter2/GradientFlow.html#definition-3"><code class="xref">definition-3</code></a> <em>(Chapter2/GradientFlow)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-dual-numbers"><td></td><td>
@@ -457,6 +452,30 @@ document.write(`
        <td></td>
        <td>
        <a href="Chapter5/TaylorAD.html#example-kuramoto-sivashinsky"><code class="xref">example-kuramoto-sivashinsky</code></a> <em>(Chapter5/TaylorAD)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-ode-1"><td></td><td>
+       <strong>example-ode-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2/GradientFlow.html#example-ode-1"><code class="xref">example-ode-1</code></a> <em>(Chapter2/GradientFlow)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-ode-p"><td></td><td>
+       <strong>example-ode-p</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2/GradientFlow.html#example-ode-p"><code class="xref">example-ode-p</code></a> <em>(Chapter2/GradientFlow)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-stiff-pde"><td></td><td>
+       <strong>example-stiff-pde</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="Chapter2/GradientFlow.html#example-stiff-pde"><code class="xref">example-stiff-pde</code></a> <em>(Chapter2/GradientFlow)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-ideal-PINN-Loss"><td></td><td>

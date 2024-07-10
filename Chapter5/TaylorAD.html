@@ -186,11 +186,13 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter1/main.html">Physics-informed neural networks</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter1/Optimization.html">Optimization (Training)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter1/PoissonEquation.html">Practice: Poisson Equation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter2/main.html">Limitations of PINNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter2/Failures.html">Failures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter2/GradientFlow.html">Gradient Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter2/NeuralTangentKernel.html">Neural Tangent Kernel Theory</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="main.html">Speed up techniques</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -420,7 +422,7 @@ Forward mode AD로 <span class="math notranslate nohighlight">\(f'(x)\)</span>�
 Finite difference formula와는 다르게 forward mode AD의 계산 비용은 미분의 횟수가 증가하게 되면 지수적으로 증가합니다.</p>
 <p>High-order 미분이 있는 방정식의 예시를 하나 보겠습니다.</p>
 <div class="proof example admonition" id="example-kuramoto-sivashinsky">
-<p class="admonition-title"><span class="caption-number">Example 3 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 6 </span></p>
 <section class="example-content" id="proof-content">
 <p>Kuramoto-Sivashinsky 방정식은 다음과 같습니다.</p>
 <div class="amsmath math notranslate nohighlight">
