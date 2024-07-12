@@ -191,7 +191,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter2/main.html">Limitations of PINNs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Chapter2/GradientFlow.html">Gradient Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter2/GradientFlow.html">Gradient Flow Pathologies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Chapter2/NeuralTangentKernel.html">Neural Tangent Kernel Theory</a></li>
 </ul>
 </details></li>
@@ -421,8 +421,8 @@ document.write(`
 <section id="physics-informed-loss">
 <h2>Physics-informed loss<a class="headerlink" href="#physics-informed-loss" title="Link to this heading">#</a></h2>
 <p>다음과 같은 편미분방정식이 있습니다.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fec4ed50-ffeb-4ec5-b847-13b8d38eb779">
-<span class="eqno">(2)<a class="headerlink" href="#equation-fec4ed50-ffeb-4ec5-b847-13b8d38eb779" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b1493d15-2609-456e-882a-cea595e18ef1">
+<span class="eqno">(2)<a class="headerlink" href="#equation-b1493d15-2609-456e-882a-cea595e18ef1" title="Permalink to this equation">#</a></span>\[\begin{align}
     \mathcal{D}[u](x) &amp; = f(x), \quad x \in \Omega, \\
     \mathcal{B}[u](x) &amp; = g(x), \quad x \in \partial \Omega.
 \end{align}\]</div>
@@ -469,7 +469,9 @@ Collocation points <span class="math notranslate nohighlight">\(x_i\)</span>를 
 사실 domain의 크기만큼을 평균낸 값에 곱해줘야 하지만, 이는 현재 크게 중요하지 않으므로 넘어가겠습니다.</p>
 <p>정리하면, (empirical) PINN loss는 다음과 같습니다.</p>
 <div class="math notranslate nohighlight" id="equation-pinn-loss">
-<span class="eqno">(3)<a class="headerlink" href="#equation-pinn-loss" title="Link to this equation">#</a></span>\[L_\mathrm{PINN}(\theta) = \frac{1}{N_r}\sum_{i=1}^{N_r} \left( \mathcal{D}[u_\theta](x_{i,r}) - f(x_{i,r}) \right)^2 + \frac{\lambda}{N_{b}}\sum_{j=1}^{N_b} \left( \mathcal{B}[u_\theta](x_{j,b}) - g(x_{j,b})\right)^2.\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-pinn-loss" title="Link to this equation">#</a></span>\[
+L_\mathrm{PINN}(\theta) = \frac{1}{N_r}\sum_{i=1}^{N_r} \left( \mathcal{D}[u_\theta](x_{i,r}) - f(x_{i,r}) \right)^2 + \frac{\lambda}{N_{b}}\sum_{j=1}^{N_b} \left( \mathcal{B}[u_\theta](x_{j,b}) - g(x_{j,b})\right)^2.
+\]</div>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -564,7 +566,7 @@ By Jaemin Oh
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

@@ -474,11 +474,12 @@ Forward Euler update rule에 해당되는 점화식 (recurrence relation)은 다
 \[
     \frac{d}{dt}Q^* y(t) = -\Lambda Q^* y(t).
 \]</div>
-<p>여기서 <span class="math notranslate nohighlight">\(z(t) = Q^* y(t)\)</span>라고 하면 위 미분방정식은 decouple 된 <span class="math notranslate nohighlight">\(p\)</span>개의 미분방정식
-$<span class="math notranslate nohighlight">\(
+<p>여기서 <span class="math notranslate nohighlight">\(z(t) = Q^* y(t)\)</span>라고 하면 위 미분방정식은 decouple 된 <span class="math notranslate nohighlight">\(p\)</span>개의 미분방정식</p>
+<div class="math notranslate nohighlight">
+\[
     z_i'(t) = -\lambda_i z_i(t)
-\)</span>$
-가 됩니다.</p>
+\]</div>
+<p>가 됩니다.</p>
 <p><a class="reference internal" href="#example-ode-1">Example 3</a>에서 보았듯이,
 forward Euler 방법은 <span class="math notranslate nohighlight">\(\Delta t &lt; 2 / \max_i \{\lambda_i\}\)</span>라는 조건이 필요합니다.</p>
 </section>
@@ -508,16 +509,84 @@ forward Euler 방법은 <span class="math notranslate nohighlight">\(\Delta t &l
 Adam과 같은 optimizer는 gradient descent 기반 방법입니다.
 Gradient descent는 gradient flow를 forward Euler 방법으로 time discretization 하면 얻을 수 있습니다.
 따라서 gradient flow를 분석하면, gradient descent에 대한 정보를 얻을 수 있습니다.</p>
-<div class="proof definition admonition" id="definition-3">
-<span id="def-gradient-flow"></span><p class="admonition-title"><span class="caption-number">Definition 9 </span></p>
+<div class="proof definition admonition" id="def-gradient-flow">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Gradient Flow)</p>
 <section class="definition-content" id="proof-content">
 <p>Model parameter <span class="math notranslate nohighlight">\(\theta\)</span>에 대한 gradient flow는 다음과 같이 정의합니다.</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-    \frac{d\theta(t)}{dt} = - \nabla_\theta L_\mathrm{PINN}(\theta(t)).
-\end{equation*}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-gradient-flow">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-gradient-flow" title="Link to this equation">#</a></span>\[
+\frac{d\theta(t)}{dt} = - \nabla_\theta L_\mathrm{PINN}(\theta(t)).
+\]</div>
 </section>
-</div></section>
+</div><p><a class="reference internal" href="#example-ode-p">Example 4</a>와 비슷하게 생겼지만,
+우변이 <span class="math notranslate nohighlight">\(\theta(t)\)</span>에 대해서 linear하지 않다는 차이점이 있습니다.
+따라서 linearization을 하고 나서 <a class="reference internal" href="#example-ode-p">Example 4</a>와 비슷한 analysis를 하면 insight를 얻을 수 있을 지도 모릅니다.</p>
+<p>먼저 linearization 과정을 설명하겠습니다.
+함수 <span class="math notranslate nohighlight">\(f: \mathbb{R}^n \rightarrow \mathbb{R}^m\)</span>가 있습니다.
+이 때 linearization이란,
+고정된 점 <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n\)</span> 근처에서 <span class="math notranslate nohighlight">\(f\)</span>를 가장 “비슷”한 linear transformation <span class="math notranslate nohighlight">\(A_x \in \mathbb{R}^{m \times n}\)</span>를 찾는 것을 말합니다.
+수학적으로 표현하면,</p>
+<div class="math notranslate nohighlight">
+\[
+f(x + h) = f(x) + A_x h + o(|h|)
+\]</div>
+<p>입니다.
+여기서 <span class="math notranslate nohighlight">\(o(|h|)\)</span>는 <span class="math notranslate nohighlight">\(\lim_{|h|\rightarrow 0} o(|h|) / |h| = 0\)</span>를 의미합니다.
+<span class="math notranslate nohighlight">\(|h|\)</span>보다 빠르게 <span class="math notranslate nohighlight">\(0\)</span>으로 간다는 뜻입니다.
+이 행렬, 혹은 linear transformation <span class="math notranslate nohighlight">\(A_x\)</span>를 <span class="math notranslate nohighlight">\(f\)</span>의 <span class="math notranslate nohighlight">\(x\)</span>에서의 미분이라고 하고,
+Fréchet derivative라고도 부릅니다.</p>
+<p>자세히 보면, <span class="math notranslate nohighlight">\(|h|\)</span>가 <span class="math notranslate nohighlight">\(0\)</span>에 가까우면 <span class="math notranslate nohighlight">\(f(x+h) = f(x) + A_x h\)</span>로 쓸 수 있습니다.
+<span class="math notranslate nohighlight">\(f\)</span>의 <span class="math notranslate nohighlight">\(x\)</span> 근방에서의 움직임이 <span class="math notranslate nohighlight">\(h \mapsto A_x h\)</span>라는 linear transformation으로 approximation 된다는 뜻입니다.
+만약 <span class="math notranslate nohighlight">\(f\)</span>가 미분가능하다면, <span class="math notranslate nohighlight">\(A_x = J_f(x)\)</span> 즉 <span class="math notranslate nohighlight">\(f\)</span>의 Jacobian이 됩니다.</p>
+<p>다시 <a class="reference internal" href="#def-gradient-flow">Definition 9</a> (Gradient Flow)로 돌아와 우변을 <span class="math notranslate nohighlight">\(\theta(t)\)</span>에 대해 linearization 해보겠습니다.
+<span class="math notranslate nohighlight">\(\nabla_\theta L : \mathbb{R}^p \rightarrow \mathbb{R}^p\)</span>를 linearization하기 위해서는</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \left( \nabla_\theta L\right)_i}{\partial \theta_j} = \frac{\partial^2 L}{\partial \theta_i \partial \theta_j},
+\]</div>
+<p>즉 <span class="math notranslate nohighlight">\(L\)</span>의 Hessian matrix가 필요합니다.
+Linearization을 위해서,
+<span class="math notranslate nohighlight">\(t_0 \le t\)</span>이고 <span class="math notranslate nohighlight">\(t\)</span>와 가까운 <span class="math notranslate nohighlight">\(t_0\)</span>를 하나 잡겠습니다.
+그러면</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d \theta(t)}{dt} = 
+- \left( \nabla_\theta L(\theta(t_0)) + H(\theta(t_0))\left(\theta(t) - \theta(t_0)\right) \right)
++ o(|\theta(t) - \theta(t_0)|)
+\]</div>
+<p>을 얻을 수 있습니다.
+다시 정리하면</p>
+<div class="math notranslate nohighlight" id="equation-linearized-gradient-flow">
+<span class="eqno">(7)<a class="headerlink" href="#equation-linearized-gradient-flow" title="Link to this equation">#</a></span>\[
+\frac{d \theta(t)}{dt} =
+- H(\theta(t_0))\theta(t) - \left( \nabla_\theta L(\theta(t_0)) - H(\theta(t_0)) \theta(t_0)\right)
++ o(|\theta(t) - \theta(t_0)|)
+\]</div>
+<p>가 됩니다.
+<span class="math notranslate nohighlight">\(o(|\theta(t) - \theta(t_0)|)\)</span> 값은 작으므로 무시할 수 있다고 가정하겠습니다.
+따라서 Gradient Descent를 할 때는 <a class="reference internal" href="#equation-linearized-gradient-flow">(7)</a>를 forward Euler 방법으로 discretization하게 됩니다.
+<a class="reference internal" href="#example-ode-p">Example 4</a>의 analysis를 통해 보면,
+<span class="math notranslate nohighlight">\(H(\theta(t_0))\)</span>의 eigenvalues <span class="math notranslate nohighlight">\(\lambda_i\)</span>에 대해
+<span class="math notranslate nohighlight">\(\Delta t &lt; 2 / \lambda_\mathrm{max}\)</span>를 만족해야 합니다.</p>
+<p>여기서 optimization이 잘 되지 않는 이유를 찾을 수 있습니다.
+Hessian의 spectrum이 넓으면, 다시 말해서</p>
+<div class="math notranslate nohighlight">
+\[
+|\frac{\lambda_\mathrm{max}}{\lambda_\mathrm{min}}| \gg 1
+\]</div>
+<p>이면, eigenvalue가 큰 방향으로는 작은 learning rate이 필요하지만 eigenvalue가 작은 방향으로는 큰 learning rate이 필요합니다.
+Stability 조건 <span class="math notranslate nohighlight">\(\Delta t &lt; 2 / \lambda_\mathrm{max}\)</span> 때문에 큰 learning rate을 취할 수 없으므로,
+optimization 속도가 필연적으로 느려지게 됩니다.</p>
+<p>PINN loss setup <a class="reference internal" href="../Chapter1/main.html#equation-pinn-loss">(3)</a>으로 돌아오겠습니다.</p>
+<div class="math notranslate nohighlight">
+\[
+L_\mathrm{PINN}(\theta) = L_\mathrm{PDE}(\theta) + \lambda L_\mathrm{BC}(\theta)
+\]</div>
+<p>입니다.
+컴퓨터로 <span class="math notranslate nohighlight">\(H_\mathrm{PDE}\)</span>와 <span class="math notranslate nohighlight">\(H_\mathrm{BC}\)</span>의 eigenvalue distribution을 계산해보면
+PDE 쪽 spectrum이 훨씬 넓은 것을 발견할 수 있습니다.
+따라서 PINN의 optimization을 방해하는 부분은 boundary condition 보다는 PDE loss 쪽이라고 이해할 수 있습니다.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -610,7 +679,7 @@ By Jaemin Oh
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>

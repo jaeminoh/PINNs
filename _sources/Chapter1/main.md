@@ -56,7 +56,7 @@ Collocation points $x_i$를 random distribution에서 뽑고, 그 점들에서 i
 사실 domain의 크기만큼을 평균낸 값에 곱해줘야 하지만, 이는 현재 크게 중요하지 않으므로 넘어가겠습니다.
 
 정리하면, (empirical) PINN loss는 다음과 같습니다.
-```{math}
-:label: PINN-Loss
+
+$$
 L_\mathrm{PINN}(\theta) = \frac{1}{N_r}\sum_{i=1}^{N_r} \left( \mathcal{D}[u_\theta](x_{i,r}) - f(x_{i,r}) \right)^2 + \frac{\lambda}{N_{b}}\sum_{j=1}^{N_b} \left( \mathcal{B}[u_\theta](x_{j,b}) - g(x_{j,b})\right)^2.
-```
+$$ (PINN-Loss)

@@ -68,6 +68,7 @@ $$
 $$
 
 여기서 $z(t) = Q^* y(t)$라고 하면 위 미분방정식은 decouple 된 $p$개의 미분방정식
+
 $$
     z_i'(t) = -\lambda_i z_i(t)
 $$
@@ -106,10 +107,86 @@ Adam과 같은 optimizer는 gradient descent 기반 방법입니다.
 Gradient descent는 gradient flow를 forward Euler 방법으로 time discretization 하면 얻을 수 있습니다.
 따라서 gradient flow를 분석하면, gradient descent에 대한 정보를 얻을 수 있습니다.
 
-(def:gradient-flow)=
-```{prf:definition}
+```{prf:definition} Gradient Flow
+:label: def-gradient-flow
+
 Model parameter $\theta$에 대한 gradient flow는 다음과 같이 정의합니다.
-\begin{equation*}
-    \frac{d\theta(t)}{dt} = - \nabla_\theta L_\mathrm{PINN}(\theta(t)).
-\end{equation*}
+
+$$
+\frac{d\theta(t)}{dt} = - \nabla_\theta L_\mathrm{PINN}(\theta(t)).
+$$ (eq-gradient-flow)
 ```
+
+{prf:ref}`example-ode-p`와 비슷하게 생겼지만,
+우변이 $\theta(t)$에 대해서 linear하지 않다는 차이점이 있습니다.
+따라서 linearization을 하고 나서 {prf:ref}`example-ode-p`와 비슷한 analysis를 하면 insight를 얻을 수 있을 지도 모릅니다.
+
+먼저 linearization 과정을 설명하겠습니다.
+함수 $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$가 있습니다.
+이 때 linearization이란,
+고정된 점 $x \in \mathbb{R}^n$ 근처에서 $f$를 가장 "비슷"한 linear transformation $A_x \in \mathbb{R}^{m \times n}$를 찾는 것을 말합니다.
+수학적으로 표현하면,
+
+$$
+f(x + h) = f(x) + A_x h + o(|h|)
+$$
+입니다.
+여기서 $o(|h|)$는 $\lim_{|h|\rightarrow 0} o(|h|) / |h| = 0$를 의미합니다.
+$|h|$보다 빠르게 $0$으로 간다는 뜻입니다.
+이 행렬, 혹은 linear transformation $A_x$를 $f$의 $x$에서의 미분이라고 하고,
+Fréchet derivative라고도 부릅니다.
+
+자세히 보면, $|h|$가 $0$에 가까우면 $f(x+h) = f(x) + A_x h$로 쓸 수 있습니다.
+$f$의 $x$ 근방에서의 움직임이 $h \mapsto A_x h$라는 linear transformation으로 approximation 된다는 뜻입니다.
+만약 $f$가 미분가능하다면, $A_x = J_f(x)$ 즉 $f$의 Jacobian이 됩니다.
+
+다시 {prf:ref}`def-gradient-flow` (Gradient Flow)로 돌아와 우변을 $\theta(t)$에 대해 linearization 해보겠습니다.
+$\nabla_\theta L : \mathbb{R}^p \rightarrow \mathbb{R}^p$를 linearization하기 위해서는
+
+$$
+\frac{\partial \left( \nabla_\theta L\right)_i}{\partial \theta_j} = \frac{\partial^2 L}{\partial \theta_i \partial \theta_j},
+$$
+즉 $L$의 Hessian matrix가 필요합니다.
+Linearization을 위해서,
+{math}`t_0 \le t`이고 $t$와 가까운 {math}`t_0`를 하나 잡겠습니다.
+그러면
+
+$$
+\frac{d \theta(t)}{dt} = 
+- \left( \nabla_\theta L(\theta(t_0)) + H(\theta(t_0))\left(\theta(t) - \theta(t_0)\right) \right)
++ o(|\theta(t) - \theta(t_0)|)
+$$
+을 얻을 수 있습니다.
+다시 정리하면
+
+$$
+\frac{d \theta(t)}{dt} =
+- H(\theta(t_0))\theta(t) - \left( \nabla_\theta L(\theta(t_0)) - H(\theta(t_0)) \theta(t_0)\right)
++ o(|\theta(t) - \theta(t_0)|)
+$$ (linearized-gradient-flow)
+가 됩니다.
+$o(|\theta(t) - \theta(t_0)|)$ 값은 작으므로 무시할 수 있다고 가정하겠습니다.
+따라서 Gradient Descent를 할 때는 {eq}`linearized-gradient-flow`를 forward Euler 방법으로 discretization하게 됩니다.
+{prf:ref}`example-ode-p`의 analysis를 통해 보면,
+$H(\theta(t_0))$의 eigenvalues $\lambda_i$에 대해
+$\Delta t < 2 / \lambda_\mathrm{max}$를 만족해야 합니다.
+
+여기서 optimization이 잘 되지 않는 이유를 찾을 수 있습니다.
+Hessian의 spectrum이 넓으면, 다시 말해서
+
+$$
+|\frac{\lambda_\mathrm{max}}{\lambda_\mathrm{min}}| \gg 1
+$$
+이면, eigenvalue가 큰 방향으로는 작은 learning rate이 필요하지만 eigenvalue가 작은 방향으로는 큰 learning rate이 필요합니다.
+Stability 조건 $\Delta t < 2 / \lambda_\mathrm{max}$ 때문에 큰 learning rate을 취할 수 없으므로,
+optimization 속도가 필연적으로 느려지게 됩니다.
+
+PINN loss setup {eq}`PINN-Loss`으로 돌아오겠습니다.
+
+$$
+L_\mathrm{PINN}(\theta) = L_\mathrm{PDE}(\theta) + \lambda L_\mathrm{BC}(\theta)
+$$
+입니다.
+컴퓨터로 $H_\mathrm{PDE}$와 $H_\mathrm{BC}$의 eigenvalue distribution을 계산해보면
+PDE 쪽 spectrum이 훨씬 넓은 것을 발견할 수 있습니다.
+따라서 PINN의 optimization을 방해하는 부분은 boundary condition 보다는 PDE loss 쪽이라고 이해할 수 있습니다.
