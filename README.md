@@ -5,4 +5,4 @@ run `jb build docs`
 run `ghp-import -n -p -f docs/_build/html`
 
 ## for inline math mode
-If there are underscores `_`, use {math}\`your_math_symbols\` instead of \$your_math_synbols\$.
+If there are underscores `_`, use {math}\`your_math_symbols\` instead of \$ your_math_synbols \$.

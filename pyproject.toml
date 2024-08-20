@@ -1,0 +1,26 @@
+[project]
+name = "PINNs"
+version = "0.0.1"
+description = "A PINN Book."
+readme = "README.md"
+requires-python ="~=3.9"
+license = {file = "LICENSE"}
+authors = [
+  {name = "Jaemin Oh", email = "jaeminoh.math@gmail.com"},
+]
+keywords = ["jax", "neural-networks", "deep-learning", "physics-informed-machine-learning"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+urls = {repository = "https://github.com/jaeminoh/PINNs" }
+dependencies = ["jax>=0.4.13,!=0.4.27", "jaxtyping>=0.2.20", "typing_extensions>=4.5.0"]

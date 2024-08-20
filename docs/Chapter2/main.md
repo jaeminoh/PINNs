@@ -5,6 +5,10 @@ PINN은 크게 두 가지 카테고리의 문제점이 있습니다.
 1. Training이 느립니다.
 2. Training이 실패하는 경우가 꽤 많습니다.
 
+```{prf:remark}
+PINN loss를 minimization 하는 것을 보통 optimization 이라고 부르고, machine learning community에서는 training이라고 부릅니다.
+```
+
 
 ## Slow Training
 미분방정식의 해를 수치적으로 구한다는 관점에서 보면, PINN은 classical methods보다 **훨씬** 느립니다.
@@ -33,6 +37,19 @@ Optimization이 잘 되어서 (ideal) PINN loss {prf:def}`ideal-PINN-Loss`가 �
 심지어, loss가 잘 줄어든 것 처럼 보이지만 미분방정식의 해를 잘 approximation하지 못하는 경우도 있습니다 {cite}`krishnapriyan2021characterizing`.
 본 챕터에서는 이 경우를 중점적으로 설명합니다.
 
-```{prf:remark}
-PINN loss를 minimization 하는 것을 보통 optimization 이라고 부르고, machine learning community에서는 training이라고 부릅니다.
-```
+PINN은 결국 neural network를 통해 PINN Loss {eq}`PINN-Loss`를 줄여서 neural network에 미분방정식 정보를 주입하는 방법입니다.
+하지만 실제로 PINN을 통해 미분방정식을 풀어보려고 시도하면, 생각보다 잘 되지 않습니다.
+여기에는 크게 두가지 이유가 있습니다.
+1. model의 expressibility 부족 문제
+2. Optimization 문제
+
+
+### Expressibility Issues
+만약 미분방정식의 해가 엄청 복잡한 함수라면, 보통 model의 parameter 개수를 충분히 많도록 해 주어야 합니다.
+충분하지 않다면, {prf:ref}`universal-approximation-theorem`을 만족하지 못하고, model이 해를 잘 approximation 할 수 있다는 이론적 보장이 깨지게 됩니다.
+
+
+### Optimization Issues
+PINN loss의 minimum을 찾는 일은 간단하지 않습니다.
+Neural network를 model로 사용할 경우에 PINN loss는 non-convex objective function입니다.
+이 경우 gradient descent가 global minimum으로 수렴한다는 이론적인 보장은 없습니다.

@@ -3,15 +3,20 @@
 
 title: 모두를 위한 Physics-informed neural networks
 author: Jaemin Oh
+copyright: "2024"  # Copyright year to be placed in the footer
 #logo: logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: auto
+  execute_notebooks: auto  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  #cache: ""    # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
+  
 
-# Define the name of the latex output file for PDF builds
+# LaTeX-specific settings
 latex:
+  latex_engine: pdflatex  # one of 'pdflatex', 'xelatex' (recommended for unicode), 'luatex', 'platex', 'uplatex'
+  use_jupyterbook_latex: true # use sphinx-jupyterbook-latex for pdf builds as default
   latex_documents:
     targetname: book.tex
 
