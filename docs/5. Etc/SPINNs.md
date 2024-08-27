@@ -10,7 +10,7 @@
 \begin{equation*}
     f(x_1, \dots, x_d) \approx \sum_{r=1}^R \otimes_{i=1}^d \mathrm{MLP}(x_i; \theta_i)
 \end{equation*}
-의 형태로 PDE의 solution을 approximation 하는 방법을 separable physics-informed neural networks 라고 부릅니다 {cite}`cho2024separable`.
+의 형태로 PDE의 solution을 approximation 하는 방법을 separable physics-informed neural networks 라고 부릅니다[@cho2024separable].
 
 그냥 봐서는 어떻게 speed-up이 있는지 감이 오지 않을 수도 있습니다.
 하지만 저 형태는 rectilinear grid 위에서 vectorize 하여 계산하게 되면,
@@ -20,7 +20,7 @@ forward pass의 횟수가 $O(N^d)$에서 $O(dN)$으로 줄어들게 됩니다.
 
 ```{prf:remark}
 :label: remark-TensorNeuralNetworks
-Tensor neural networks (TNNs)라는 이름으로도 알려져 있으나 {cite}`wang2022tensor`, arXiv에 등장한 날짜 기준으로 SPINNs가 몇개월 정도 빠릅니다.
+Tensor neural networks (TNNs)라는 이름으로도 알려져 있으나[@wang2022tensor], arXiv에 등장한 날짜 기준으로 SPINNs가 몇개월 정도 빠릅니다.
 또한 TNN은 CANDECOMP의 형태만 사용함에도 불구하고 "tensor"라는 일반적인 이름을 붙였습니다.
 Tensor method에는 여러가지 방법이 있습니다. CANDECOMP, Tucker format, tensor train format 등.
 ```

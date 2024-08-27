@@ -1,7 +1,7 @@
 # Introduction
-Physics-informed neural networks (PINNs)는 2018년 11월에 "The journal of computational physics"에 온라인 버전으로 처음 등장했습니다 {cite}`raissi2019physics`.
+Physics-informed neural networks (PINNs)는 2018년 11월에 "The journal of computational physics"에 온라인 버전으로 처음 등장했습니다[@raissi2019physics].
 이는 neural networks 모델에 미분방정식 관련 정보를 추가하는 방법으로, 곧이어 일반적인 머신러닝 모델에 물리적 정보를 추가하는 framework인
-physics-informed machine learning (PIML) {cite}`karniadakis2021physics`으로 일반화되었습니다.
+physics-informed machine learning (PIML)[@karniadakis2021physics]으로 일반화되었습니다.
 이 연구는 전세계적으로 많은 관심을 받았습니다.
 제가 PINNs 논문을 처음으로 접한 2022년 11월에, 인용 횟수는 5000회 정도 였습니다 (인용 횟수 기준으로 gPC 논문보다 아래에 있었음).
 2024년 7월 3일 Google Scholar 기준으로 인용 횟수는 거의 두배가 되었습니다 (9621).

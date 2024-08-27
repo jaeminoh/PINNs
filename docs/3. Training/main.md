@@ -22,7 +22,7 @@ PINN은 GPU에서 1분 남짓이 걸렸지만,
 Central difference finite difference method는 1초도 걸리지 않습니다.
 따라서 현재 PDE를 푸는데 PINNs를 이용하는 것은 그리 바람직하다고 볼 수 없습니다.
 Super high dimension으로 가게 되면 또 할 말이 생길 수 있겠습니다만,
-적어도 (6 + 1) 차원 (e.g. Boltzmann equation) 까지는 polynomial-based 방법보다 느립니다 {cite}`oh2024separable`.
+적어도 (6 + 1) 차원 (e.g. Boltzmann equation) 까지는 polynomial-based 방법보다 느립니다[@oh2024separable].
 
 그럼에도 불구하고 본 책은 PINN을 통해 미분방정식을 푸는 방법에 대해 설명하고 있습니다.
 정확히는 PINN loss를 minimization 하는 방법에 대해 설명하고 있다고 보아야 합니다.
@@ -34,7 +34,7 @@ Super high dimension으로 가게 되면 또 할 말이 생길 수 있겠습니�
 ## Training Failures
 Optimization이 잘 되어서 (ideal) PINN loss {prf:def}`ideal-PINN-Loss`가 정확하게 $0$이 된다면 아무런 문제가 없습니다.
 하지만 symbolic 계산을 하는 것이 아니라면, 어려가지 이유 때문에 정확하게 $0$을 달성할 수는 없습니다.
-심지어, loss가 잘 줄어든 것 처럼 보이지만 미분방정식의 해를 잘 approximation하지 못하는 경우도 있습니다 {cite}`krishnapriyan2021characterizing`.
+심지어, loss가 잘 줄어든 것 처럼 보이지만 미분방정식의 해를 잘 approximation하지 못하는 경우도 있습니다[@krishnapriyan2021characterizing].
 본 챕터에서는 이 경우를 중점적으로 설명합니다.
 
 PINN은 결국 neural network를 통해 PINN Loss {eq}`PINN-Loss`를 줄여서 neural network에 미분방정식 정보를 주입하는 방법입니다.

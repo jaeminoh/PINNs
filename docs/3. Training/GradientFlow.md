@@ -21,8 +21,8 @@ $$
 
 미분방정식이 stiff하다는 것의 의미는, explicit method가 잘 작동하지 않는다는 뜻입니다.
 다음 예를 보겠습니다.
-```{prf:example} Stiff Ordinary Differential Equation
-:label: example-ode-1
+
+### Example - Stiff Ordinary Differential Equation
 
 $$
     y'(t) = -a y(t), \quad a > 0, \quad t \ge 0, \quad y(0) = y_0.
@@ -46,15 +46,13 @@ $$
 입니다.
 따라서 $a>0$가 커질수록, 더 작은 $\Delta t$가 필요하게 됩니다.
 반면 backward Euler 방법은 이러한 제약조건이 없습니다.
-```
+
 
 이번에는 $y: [0, \infty) \rightarrow \mathbb{R}^p$인 경우를 생각해 보겠습니다.
-```{prf:example} Stiff System of Ordinary Differential Equations
-:label: example-ode-p
-
+### Example - Stiff System of Ordinary Differential Equations
 $$
     y'(t) = - A y(t),
-$$ (ode-p)
+$$
 $A$는 symmetric positive definite matrix라고 가정하겠습니다.
 ($a>0$의 generalization.)
 
@@ -74,18 +72,15 @@ $$
 $$
 가 됩니다.
 
-{prf:ref}`example-ode-1`에서 보았듯이,
-forward Euler 방법은 {math}`\Delta t < 2 / \max_i \{\lambda_i\}`라는 조건이 필요합니다.
-```
+[여기](#example---stiff-ordinary-differential-equation)에서 보았듯이,
+forward Euler 방법은 $\Delta t < 2 / \max_i \{\lambda_i\}$라는 조건이 필요합니다.
 
-```{prf:example} Stiff Partial Differential Equation
-:label: example-stiff-pde
-
+### Example - Stiff Partial Differential Equation
 Heat equation은 stiff PDE중 하나입니다.
 
 $$
     \partial_t u = \partial_x^2 u.
-$$ (heat)
+$$
 
 먼저 Fourier transform을 {eq}`heat`의 양변에 취하면 다음을 얻습니다.
 
@@ -96,30 +91,28 @@ $$
 따라서 forward Euler 방법은 $\Delta t < 2 / \xi^2$라는 조건이 필요합니다.
 $x$ 방향으로 grid를 잘게 자를 수록 $\xi$의 값은 커집니다.
 예를 들어 $x$ 방향으로 $N$개의 grid point를 도입했다면, $\max \xi = N/2$가 됩니다.
-따라서 $t$ 방향은 $\Delta t = O(N{-2})$를 만족해야 합니다.
-```
+따라서 $t$ 방향은 $\Delta t = O(N^{-2})$를 만족해야 합니다.
+
 
 
 ## Gradient Flow
-PINN training이 실패하는 이유를 gradient flow의 eigenvalue bias로 설명할 수 있습니다 {cite}`wang2021understanding`.
+PINN training이 실패하는 이유를 gradient flow의 eigenvalue bias로 설명할 수 있습니다[@wang2021understanding].
 간단한 아이디어입니다.
 Adam과 같은 optimizer는 gradient descent 기반 방법입니다.
 Gradient descent는 gradient flow를 forward Euler 방법으로 time discretization 하면 얻을 수 있습니다.
 따라서 gradient flow를 분석하면, gradient descent에 대한 정보를 얻을 수 있습니다.
 
-```{prf:definition} Gradient Flow
-:label: def-gradient-flow
-
+### Definition - Gradient Flow
 Model parameter $\theta$에 대한 gradient flow는 다음과 같이 정의합니다.
 
 $$
 \frac{d\theta(t)}{dt} = - \nabla_\theta L_\mathrm{PINN}(\theta(t)).
-$$ (eq-gradient-flow)
-```
+$$
 
-{prf:ref}`example-ode-p`와 비슷하게 생겼지만,
+
+[여기](#example---stiff-system-of-ordinary-differential-equations)와 비슷하게 생겼지만,
 우변이 $\theta(t)$에 대해서 linear하지 않다는 차이점이 있습니다.
-따라서 linearization을 하고 나서 {prf:ref}`example-ode-p`와 비슷한 analysis를 하면 insight를 얻을 수 있을 지도 모릅니다.
+따라서 linearization을 하고 나서 [여기](#example---stiff-system-of-ordinary-differential-equations)와 비슷한 analysis를 하면 insight를 얻을 수 있을 지도 모릅니다.
 
 먼저 linearization 과정을 설명하겠습니다.
 함수 $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$가 있습니다.
@@ -140,7 +133,7 @@ Fréchet derivative라고도 부릅니다.
 $f$의 $x$ 근방에서의 움직임이 $h \mapsto A_x h$라는 linear transformation으로 approximation 된다는 뜻입니다.
 만약 $f$가 미분가능하다면, $A_x = J_f(x)$ 즉 $f$의 Jacobian이 됩니다.
 
-다시 {prf:ref}`def-gradient-flow` (Gradient Flow)로 돌아와 우변을 $\theta(t)$에 대해 linearization 해보겠습니다.
+다시 [Gradient Flow](#definition---gradient-flow)로 돌아와 우변을 $\theta(t)$에 대해 linearization 해보겠습니다.
 $\nabla_\theta L : \mathbb{R}^p \rightarrow \mathbb{R}^p$를 linearization하기 위해서는
 
 $$
@@ -148,7 +141,7 @@ $$
 $$
 즉 $L$의 Hessian matrix가 필요합니다.
 Linearization을 위해서,
-{math}`t_0 \le t`이고 $t$와 가까운 {math}`t_0`를 하나 잡겠습니다.
+$t_0 \le t$이고 $t$와 가까운 $t_0$를 하나 잡겠습니다.
 그러면
 
 $$
@@ -167,7 +160,7 @@ $$ (linearized-gradient-flow)
 가 됩니다.
 $o(|\theta(t) - \theta(t_0)|)$ 값은 작으므로 무시할 수 있다고 가정하겠습니다.
 따라서 Gradient Descent를 할 때는 {eq}`linearized-gradient-flow`를 forward Euler 방법으로 discretization하게 됩니다.
-{prf:ref}`example-ode-p`의 analysis를 통해 보면,
+[여기](#example---stiff-system-of-ordinary-differential-equations)의 analysis를 통해 보면,
 $H(\theta(t_0))$의 eigenvalues $\lambda_i$에 대해
 $\Delta t < 2 / \lambda_\mathrm{max}$를 만족해야 합니다.
 
@@ -181,7 +174,7 @@ $$
 Stability 조건 $\Delta t < 2 / \lambda_\mathrm{max}$ 때문에 큰 learning rate을 취할 수 없으므로,
 optimization 속도가 필연적으로 느려지게 됩니다.
 
-PINN loss setup {eq}`PINN-Loss`으로 돌아오겠습니다.
+PINN loss setup으로 돌아오겠습니다.
 
 $$
 L_\mathrm{PINN}(\theta) = L_\mathrm{PDE}(\theta) + \lambda L_\mathrm{BC}(\theta)
