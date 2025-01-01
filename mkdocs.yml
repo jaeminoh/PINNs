@@ -35,6 +35,8 @@ plugins:
       csl_file: "bibliography/ima.csl"
 
 markdown_extensions:
+  - admonition
+  - pymdownx.details
   - def_list
   - footnotes
   - attr_list
